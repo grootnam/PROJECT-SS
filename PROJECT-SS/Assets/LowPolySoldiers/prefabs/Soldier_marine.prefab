@@ -224,6 +224,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -384,9 +385,10 @@ GameObject:
   - component: {fileID: 454602}
   - component: {fileID: 3304202}
   - component: {fileID: 2366756}
+  - component: {fileID: 3779230779665094495}
   m_Layer: 0
   m_Name: weapon_m4
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -400,7 +402,7 @@ Transform:
   m_GameObject: {fileID: 138886}
   m_LocalRotation: {x: -0.05240673, y: -0.07644913, z: -0.69095963, w: 0.7169267}
   m_LocalPosition: {x: -0.20295359, y: 0.03991704, z: 0.07779779}
-  m_LocalScale: {x: 1.029025, y: 1.0290254, z: 1.0290251}
+  m_LocalScale: {x: 1.029025, y: 1.0290251, z: 1.0290251}
   m_Children: []
   m_Father: {fileID: 424424}
   m_RootOrder: 1
@@ -427,6 +429,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -451,6 +454,29 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &3779230779665094495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f7646eac59a7443a2835f1b9c61428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  label: m4a1
+  accuracy: 0
+  fireSpeed: 0.2
+  reloadSpeed: 2
+  damage: 30
+  magBullet: 0
+  loadedBullet: 0
+  maxBullet: 0
+  totalBullet: 0
+  recoil: 0
+  Weapon: {fileID: 0}
 --- !u!1 &140132
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,6 +609,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 424424}
+  - component: {fileID: 5477704841412526406}
   m_Layer: 0
   m_Name: Bip001 R Hand
   m_TagString: Untagged
@@ -606,6 +633,19 @@ Transform:
   m_Father: {fileID: 487386}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5477704841412526406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a161c376dcdb1489de88ed9a932bcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentGun: {fileID: 3779230779665094495}
 --- !u!1 &156372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,6 +1217,7 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
