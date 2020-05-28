@@ -11,11 +11,29 @@ public class GunController : MonoBehaviour
     private bool isReload = false;
 
     private RaycastHit hitInfo;
-    
-    
+
+
+    // 총의 총구 위치
+    private Transform gunMuzzle;
+    // 발사 총구화염, 예광탄 , 피격시 총 스파크.
+    public GameObject muzzleFlash, shot, sparks;
+
+    // 총성
+    public AudioClip ShotSound;
+    // 재장전음
+    public AudioClip ReloadSound;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
+
+        // 화면상에서 보이는 샷 이펙트들을 숨김.
+        muzzleFlash.SetActive(false);
+        shot.SetActive(false);
+        sparks.SetActive(false);
+
+        // 총구 위치
+        gunMuzzle = currentGun.transform.Find("muzzle");
     }
 
     void Update()
@@ -29,8 +47,15 @@ public class GunController : MonoBehaviour
         TryFire();
 
         TryReload();
+        
+        
     }
 
+    // 총구화염 숨기기
+    void muzzleflashfalse()
+    {
+        muzzleFlash.SetActive(false);
+    }
     // ****************************************
     // 총알 발사 부분
 
@@ -69,13 +94,25 @@ public class GunController : MonoBehaviour
         animator.SetTrigger("Fire");
         Hit();
 
-        /*
-        * 발사 시 총구 스파크 효과
-        * 발사 시 총성 오디오 효과
-       
-        구현 해 주시면 됩니다!
-        */
- 
+        // 총성 재생
+        AudioSource.PlayClipAtPoint(ShotSound, gunMuzzle.position, 5f);
+
+        // 총구 화염효과
+        muzzleFlash.SetActive(true);
+        muzzleFlash.transform.SetParent(gunMuzzle);
+        muzzleFlash.transform.localPosition = Vector3.zero;
+        muzzleFlash.transform.localEulerAngles = Vector3.back;
+        // 0.3초뒤 총구 화염 숨김함수 호출
+        Invoke("muzzleflashfalse", 0.3f);
+
+        // 예광탄
+        GameObject instantShot = Object.Instantiate<GameObject>(shot);
+        instantShot.SetActive(true);
+        instantShot.transform.position = gunMuzzle.position;
+        instantShot.transform.rotation = Quaternion.LookRotation(currentGun.transform.up * -1);
+        instantShot.transform.parent = shot.transform.parent;
+
+        
     }
 
     private void Hit()
@@ -83,13 +120,14 @@ public class GunController : MonoBehaviour
         if(Physics.Raycast(currentGun.transform.position, currentGun.transform.up * -1, out hitInfo, currentGun.range))
         {
             Debug.Log(hitInfo.transform.name);
-            /*
-            * 인수인계 사항
-            * - "currentGun.transform.up * -1" 이 총구의 방향입니다
-            * - hitInfo 위에 선언되어 있고, Raycast한 정보 이용해서 피격 Effect 구현해 넣어주세요!
+            // 피격시 총알의 스파크 표시 
+            GameObject instantSparks = Object.Instantiate<GameObject>(sparks);
+            instantSparks.SetActive(true);
+            instantSparks.transform.position = hitInfo.point;
 
-            구현 해 주시면 됩니다!
-            */
+            //적 피격
+            if(hitInfo.transform.gameObject.tag=="Enemy") // 적태그가 적용된 오브젝트만 적용
+                hitInfo.transform.gameObject.GetComponent<EnemyBehaviour>().ReceiveDamage(currentGun.damage);
         }
     }
 
@@ -111,6 +149,9 @@ public class GunController : MonoBehaviour
         // 총알이 남아있다면,
         if(currentGun.totalBullet > 0)
         {
+            //재장전 오디오클립 재생
+            AudioSource.PlayClipAtPoint(ReloadSound, gunMuzzle.position, 5f);
+
             // isReload로 장전 시작 표현
             isReload = true;
             animator.SetTrigger("Reload");
