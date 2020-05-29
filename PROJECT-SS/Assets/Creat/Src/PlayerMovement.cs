@@ -58,33 +58,39 @@ public class PlayerMovement : MonoBehaviour
     void Rotate()
     {
         target = null;
-        getTarget();
+        GetTarget();
         Vector3 desiredForward;
+   
+        // GetTarget()함수에서 target이 설정되지 않았다면,
         if (target == null)
         {
-
+            // 이동방향(movement)으로 회전벡터 설정
             desiredForward = Vector3.RotateTowards(
                 transform.forward,
                 movement,
                 turnSpeed * Time.deltaTime,
                 0f);
         }
+        // GetTarget()함수에서 target이 설정됐다면,
         else
         {
+            // 플레이어로부터 target으로의 벡터를 생성하고
             Vector3 direction = target.position - transform.position;
             direction.y = 0f;
             direction = direction.normalized * (Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed) * Time.deltaTime;
+            // 그 벡터 방향으로 회전벡터 설정
             desiredForward = Vector3.RotateTowards(
                 transform.forward,
                 direction,
                 turnSpeed * Time.deltaTime,
                 0f);
         }
+
         rotation = Quaternion.LookRotation(desiredForward);
         playerRigidbody.MoveRotation(rotation);
     }
 
-    void getTarget()
+    void GetTarget()
     {
         GameObject[] taggedEnemys = GameObject.FindGameObjectsWithTag("Enemy");
         float closestDistance = Mathf.Infinity;
@@ -96,9 +102,10 @@ public class PlayerMovement : MonoBehaviour
             // Player와 Enemy의 pos저장
             Vector3 playerPos = transform.position;
             Vector3 objectPos = taggedEnemy.transform.position;
-
-            // 장애물이 사이에 있는지 Ray로 검사
             Vector3 direction = objectPos - playerPos;
+    
+            /*
+            // 장애물이 사이에 있는지 Ray로 검사
             Ray ray = new Ray(playerPos, direction);
             RaycastHit raycastHit;
             bool rayBlocked = true;
@@ -110,20 +117,34 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
             // Ray검사 통과했다면 ,
-            if (true)
+            if (!rayBlocked)
             {
-                float dist = direction.magnitude;
-                // targetRange안의 Object와, Player의 거리 비교
-                if (dist < targetRange)
+            }
+            */
+
+            float dist = direction.magnitude;
+            // targetRange안의 Object와, Player의 거리 비교
+            if (dist < targetRange)
+            {
+                if (dist < closestDistance)
                 {
-                    if (dist < closestDistance)
-                    {
-                        closestDistance = dist;
-                        closestEnemy = taggedEnemy.transform;
-                    }
+                    closestDistance = dist;
+                    closestEnemy = taggedEnemy.transform;
                 }
             }
+            
         }
         target = closestEnemy;
+
+        // target의 설정 여부에 따라, 조준 상태를 변경
+        if (target == null)
+        {
+            animator.SetBool("IsAiming", false);
+        }
+        else
+        {
+            animator.SetBool("IsAiming", true);
+        }
     }
+
 }
