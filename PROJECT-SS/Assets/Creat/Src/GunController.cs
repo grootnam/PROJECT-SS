@@ -94,7 +94,7 @@ public class GunController : MonoBehaviour
         animator.SetTrigger("Fire");
         Hit();
 
-        // 총성 재생
+        // 총성 재생(재생오디오, 들리는 위치, 사운드크기)
         AudioSource.PlayClipAtPoint(ShotSound, gunMuzzle.position, 5f);
 
         // 총구 화염효과

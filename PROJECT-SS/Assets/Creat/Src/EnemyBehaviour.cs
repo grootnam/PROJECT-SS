@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -34,14 +35,14 @@ public class EnemyBehaviour : MonoBehaviour
     {
         move();
         rotate();
-       
     }
     void move()
     {
+        Vector3 dist = follow.transform.position - this.transform.position; 
         //죽지 않았을때만 쫒아온다.
         if (!dead)
         {
-            nav.SetDestination(follow.transform.position);
+            nav.SetDestination(follow.transform.position+ new Vector3(dist.x,0f,dist.z));
         }
         //죽었을 시 도착지를 자기자신으로 재설정해서 멈춤
         else
@@ -59,7 +60,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         health -= damage;
 
-        //피가 0이하일떄(죽음)
+        //피가 0 이하일 때 (죽음)
         if(health<=0)
         {
             dead = true;

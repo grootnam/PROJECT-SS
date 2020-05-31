@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Specialized;
 
 // This class is created for the example scene. There is no support for this script.
 public class CameraFollow : MonoBehaviour
@@ -9,10 +10,11 @@ public class CameraFollow : MonoBehaviour
 
 	public bool zMove;
 
-	Vector3 offset;                     // The initial offset from the target.
+	Vector3 offset;                // The initial offset from the target.
 
 	void Start()
 	{
+		transform.position = target.position + new Vector3(0, 9, -5);
 		zMove = true;
 		// Calculate the initial offset.
 		offset = transform.position - target.position;
