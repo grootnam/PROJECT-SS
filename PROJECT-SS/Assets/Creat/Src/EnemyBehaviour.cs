@@ -11,7 +11,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     //해치웠나?
     private bool dead = false;
-
+    private CapsuleCollider Collider;
     //따라가는 대상
     public GameObject follow;
     private NavMeshAgent nav;
@@ -22,12 +22,14 @@ public class EnemyBehaviour : MonoBehaviour
     public float TurnSpeed=40f;
 
     private Animator animator;
+    
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         EnemyRigidbody = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
+        Collider = GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
@@ -71,6 +73,9 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 //태그를 변경함으로서 이미 죽은 몬스터에게 조준안하게함
                 this.gameObject.tag = "Untagged";
+
+                //isTrigger를 활성화하여 물리적으로 부딪힘이 없어짐
+                Collider.isTrigger = true;
 
                 //몬스터 오브젝트 삭제(5초후)
                 Destroy(gameObject, 5f);
