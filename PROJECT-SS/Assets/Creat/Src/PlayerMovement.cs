@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     void Move(float h, float v)
     {
         // 좌표 이동
-        movement.Set(h, 0f, v);
+        movement.Set(h, 0.0f, v);
         // 좌표 이동 속도 조절
         movement = movement.normalized * (Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed) * Time.deltaTime;
 
