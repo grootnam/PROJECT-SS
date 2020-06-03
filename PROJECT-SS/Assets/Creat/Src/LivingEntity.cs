@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LivingEntity : MonoBehaviour, IDamageable
+public class LivingEntity : MonoBehaviour
 {
     public float startingHealth;
     public float startingShield;
     public float startingHungry;
     public float startingThirsty;
-    protected float health; // 체력
+    public float health; // 체력
     protected float shield; // 보호막
     protected float hungry; // 배고픔
     protected float thirsty; // 목마름
@@ -22,7 +22,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
         thirsty = startingThirsty;
     }
 
-    public void TakeHit(float damage, RaycastHit hit)
+    public void TakeHit(float damage)
     {
         health -= damage;
 

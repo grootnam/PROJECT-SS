@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using UnityEngine;
 using UnityEngine.AI;
-
+using System;
 public class EnemyBehaviour : MonoBehaviour
 {
     //체력
     public float health = 100f;
+    //몬스터 공격력
+    public float Damage = 10;
 
+    private Animator animator;
+
+    [NonSerialized]
     //해치웠나?
-    private bool dead = false;
+    public bool dead = false;
     private CapsuleCollider Collider;
+    
     //따라가는 대상
     public GameObject follow;
     private NavMeshAgent nav;
@@ -19,9 +25,8 @@ public class EnemyBehaviour : MonoBehaviour
     //움직임
     Quaternion rotation = Quaternion.identity;
     Rigidbody EnemyRigidbody;
-    public float TurnSpeed=40f;
 
-    private Animator animator;
+    private bool Attack;
     
     // Start is called before the first frame update
     void Start()
@@ -30,21 +35,22 @@ public class EnemyBehaviour : MonoBehaviour
         EnemyRigidbody = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
         Collider = GetComponent<CapsuleCollider>();
+        follow = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+        Attack = animator.GetBool("Attack");
         move();
         rotate();
     }
     void move()
     {
-        Vector3 dist = follow.transform.position - this.transform.position; 
-        //죽지 않았을때만 쫒아온다.
-        if (!dead)
+        //죽지 않았을때, 공격 하지않을때 쫒아온다.
+        if (!dead&&!Attack)
         {
-            nav.SetDestination(follow.transform.position+ new Vector3(dist.x,0f,dist.z));
+            nav.SetDestination(follow.transform.position);
         }
         //죽었을 시 도착지를 자기자신으로 재설정해서 멈춤
         else
