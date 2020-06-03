@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LivingEntity : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class LivingEntity : MonoBehaviour
     protected float thirsty; // 목마름
     protected bool isDead; // 죽었는가?
 
+    public Slider hpBar;
+
+
+
     protected virtual void Start()
     {
         health = startingHealth;
@@ -25,6 +30,7 @@ public class LivingEntity : MonoBehaviour
     public void TakeHit(float damage)
     {
         health -= damage;
+        hpBar.value = health;
 
         if (health <= 0 && !isDead)
             Die();
@@ -33,6 +39,6 @@ public class LivingEntity : MonoBehaviour
     protected void Die()
     {
         isDead = true;
-        GameObject.Destroy(gameObject);
+        //GameObject.Destroy(gameObject);
     }
 }
