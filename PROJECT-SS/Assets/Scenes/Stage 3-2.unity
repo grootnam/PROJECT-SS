@@ -1517,7 +1517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 0.9
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -8953,8 +8953,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d146ce12b4b8843ac96e70d2a9b7f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slHP: {fileID: 0}
-  fSliderBarTime: 0
 --- !u!1001 &1746175818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9316,11 +9314,6 @@ PrefabInstance:
       propertyPath: hpBar
       value: 
       objectReference: {fileID: 763056439}
-    - target: {fileID: 3779230779665094495, guid: 5670a6053a802c84a9dc680c8c3dbd0f,
-        type: 3}
-      propertyPath: loadedBullet
-      value: 25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5670a6053a802c84a9dc680c8c3dbd0f, type: 3}
 --- !u!1001 &1825450719
