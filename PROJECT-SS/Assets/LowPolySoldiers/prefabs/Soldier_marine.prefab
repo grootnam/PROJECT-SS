@@ -156,6 +156,7 @@ MonoBehaviour:
   startingHungry: 100
   startingThirsty: 100
   health: 0
+  hpBar: {fileID: 0}
 --- !u!114 &1125336685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1318,7 +1319,7 @@ PrefabInstance:
     - target: {fileID: 1984676285846320729, guid: 9ab4ffc0079dbe14198c39a7a3499daa,
         type: 3}
       propertyPath: loadedBullet
-      value: 50
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1984676285846320729, guid: 9ab4ffc0079dbe14198c39a7a3499daa,
         type: 3}

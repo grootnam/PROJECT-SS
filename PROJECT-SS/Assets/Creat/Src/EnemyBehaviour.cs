@@ -52,11 +52,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             nav.SetDestination(follow.transform.position);
         }
-        //죽었을 시 도착지를 자기자신으로 재설정해서 멈춤
-        else
-        {
-            nav.SetDestination(transform.position);
-        }
+ 
 
     }
     void rotate()
@@ -79,7 +75,7 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 //태그를 변경함으로서 이미 죽은 몬스터에게 조준안하게함
                 this.gameObject.tag = "Untagged";
-
+                nav.enabled = false;
                 //isTrigger를 활성화하여 물리적으로 부딪힘이 없어짐
                 Collider.isTrigger = true;
 
