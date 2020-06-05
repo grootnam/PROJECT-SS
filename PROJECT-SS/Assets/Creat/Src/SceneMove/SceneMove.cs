@@ -5,8 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneMove : MonoBehaviour
 {
-    public GameObject player;
+    GameObject player;
     public GameObject destination;
+
+    void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
 
     void OnTriggerEnter (Collider other)
     {
@@ -57,6 +62,7 @@ public class SceneMove : MonoBehaviour
                     break;
 
                 case "Stage 3-3":
+                case "StartStage":
                     switch(destination.name)
                     {
                         case "Goto_2-3":

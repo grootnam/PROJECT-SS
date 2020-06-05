@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GunController : MonoBehaviour
 {
@@ -18,6 +20,9 @@ public class GunController : MonoBehaviour
     // 발사 총구화염, 예광탄 , 피격시 총 스파크.
     public GameObject muzzleFlash, shot, sparks;
 
+    // UI : 남은 탄 수
+    public Text leftbullet;
+
     // 총성
     public AudioClip ShotSound;
     // 재장전음
@@ -26,6 +31,8 @@ public class GunController : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+
+        leftbullet.text = currentGun.loadedBullet.ToString();
 
         // 화면상에서 보이는 샷 이펙트들을 숨김.
         muzzleFlash.SetActive(false);
@@ -88,11 +95,14 @@ public class GunController : MonoBehaviour
 
     private void Shoot()
     {
-        // 발사 시 처리 : 총알 갯수, 연사 대기시간 초기화, 애니메이션 재생
+        // 발사 시 처리 : 총알 갯수, 연사 대기시간 초기화, 애니메이션 재생, ui 탄 표시 감소
         currentGun.loadedBullet--;
         currentFireDelayTime = currentGun.fireDelayTime;
         animator.SetTrigger("Fire");
         Hit();
+
+        // ui의 탄 수 감소
+        leftbullet.text = currentGun.loadedBullet.ToString();
 
         // 총성 재생(재생오디오, 들리는 위치, 사운드크기)
         AudioSource.PlayClipAtPoint(ShotSound, gunMuzzle.position, 5f);
@@ -177,6 +187,7 @@ public class GunController : MonoBehaviour
             }
 
             // isReload로 장전 종료 표현
+            leftbullet.text = currentGun.loadedBullet.ToString();
             isReload = false;
         }
         else
