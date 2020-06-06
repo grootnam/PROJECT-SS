@@ -11,10 +11,11 @@ public class LivingEntity : MonoBehaviour
     public float startingHungry;
     public float startingThirsty;
     public float health; // 체력
-    protected float shield; // 보호막
-    protected float hungry; // 배고픔
-    protected float thirsty; // 목마름
-    protected bool isDead; // 죽었는가?
+    public int day; //생존한 날 수
+    public float shield; // 보호막
+    public float hungry; // 배고픔
+    public float thirsty; // 목마름
+    public bool isDead; // 죽었는가?
 
     public Slider hpBar;
 
@@ -26,6 +27,7 @@ public class LivingEntity : MonoBehaviour
         shield = startingShield;
         hungry = startingHungry;
         thirsty = startingThirsty;
+        day = 0;
     }
 
     public void TakeHit(float damage)
