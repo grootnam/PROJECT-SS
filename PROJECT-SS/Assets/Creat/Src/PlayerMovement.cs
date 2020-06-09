@@ -11,13 +11,16 @@ public class PlayerMovement : MonoBehaviour
     Vector3 movement;
     Animator animator;
     Rigidbody playerRigidbody;
+    AudioSource audioSource;
     Quaternion rotation = Quaternion.identity;
     //private Transform gun, ball;
-
+    private float originpitch;
     void Start()
     {
         animator = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
+        originpitch = audioSource.pitch;
         //gun = transform.Find("gun");
         //ball = transform.Find("ball");
     }
@@ -49,7 +52,21 @@ public class PlayerMovement : MonoBehaviour
 
         bool isWalking = hasHorizontalInput || hasVerticalInput;
         bool isRun = isWalking && Input.GetKey(KeyCode.LeftShift);
-
+        if (isWalking && !isRun)
+        {
+            audioSource.pitch = originpitch;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+        else if(isRun){
+            audioSource.pitch = originpitch * 2.0f;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
         animator.SetBool("IsRun", isRun);
         animator.SetBool("IsWalking", isWalking);
         playerRigidbody.MovePosition(playerRigidbody.position + movement);

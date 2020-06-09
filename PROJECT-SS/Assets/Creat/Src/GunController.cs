@@ -18,7 +18,7 @@ public class GunController : MonoBehaviour
     // 총의 총구 위치
     private Transform gunMuzzle;
     // 발사 총구화염, 예광탄 , 피격시 총 스파크.
-    public GameObject muzzleFlash, shot, sparks;
+    public GameObject muzzleFlash, shot, sparks, bloodEffect;
 
     // UI : 남은 탄 수
     public Text leftbullet;
@@ -38,7 +38,7 @@ public class GunController : MonoBehaviour
         muzzleFlash.SetActive(false);
         shot.SetActive(false);
         sparks.SetActive(false);
-
+        bloodEffect.SetActive(false);
         // 총구 위치
         gunMuzzle = currentGun.transform.Find("muzzle");
     }
@@ -131,13 +131,21 @@ public class GunController : MonoBehaviour
         {
             Debug.Log(hitInfo.transform.name);
             // 피격시 총알의 스파크 표시 
-            GameObject instantSparks = Object.Instantiate<GameObject>(sparks);
-            instantSparks.SetActive(true);
-            instantSparks.transform.position = hitInfo.point;
-
             //적 피격
-            if(hitInfo.transform.gameObject.tag=="Enemy") // 적태그가 적용된 오브젝트만 적용
+            if (hitInfo.transform.gameObject.tag == "Enemy")
+            { // 적태그가 적용된 오브젝트만 적용
+                GameObject instantBlood = Object.Instantiate<GameObject>(bloodEffect);
+                instantBlood.SetActive(true);
+                instantBlood.transform.position = hitInfo.point;
                 hitInfo.transform.gameObject.GetComponent<EnemyBehaviour>().ReceiveDamage(currentGun.damage);
+            }
+            else
+            {
+                GameObject instantSparks = Object.Instantiate<GameObject>(sparks);
+                instantSparks.SetActive(true);
+                instantSparks.transform.position = hitInfo.point;
+
+            }
         }
     }
 
