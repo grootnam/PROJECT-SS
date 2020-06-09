@@ -19,7 +19,7 @@ public class LivingEntity : MonoBehaviour
 
     public Slider hpBar;
 
-
+    public GameObject ReceiveDamageEffect;
 
     protected virtual void Start()
     {
@@ -28,12 +28,17 @@ public class LivingEntity : MonoBehaviour
         hungry = startingHungry;
         thirsty = startingThirsty;
         day = 0;
+        ReceiveDamageEffect.SetActive(false);
     }
 
     public void TakeHit(float damage)
     {
         health -= damage;
         hpBar.value = health;
+
+        GameObject instanthit = Object.Instantiate<GameObject>(ReceiveDamageEffect);
+        instanthit.SetActive(true);
+        instanthit.transform.position = transform.position+Vector3.up;
 
         if (health <= 0 && !isDead)
             Die();

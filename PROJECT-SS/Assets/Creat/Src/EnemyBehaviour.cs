@@ -11,6 +11,8 @@ public class EnemyBehaviour : MonoBehaviour
     //몬스터 공격력
     public float Damage = 10;
 
+    //날짜별 증가되는 적의 강함...
+    public float DayPlusDamage, DayPlusSpeed, DayPlusHealth;
     private Animator animator;
 
     [NonSerialized]
@@ -27,7 +29,12 @@ public class EnemyBehaviour : MonoBehaviour
     Rigidbody EnemyRigidbody;
 
     private bool Attack;
-    
+
+    //오디오소스
+    AudioSource[] audioSources;
+
+    //LivingEntity에서 day가져옴
+    private int day;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +43,12 @@ public class EnemyBehaviour : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
         Collider = GetComponent<CapsuleCollider>();
         follow = GameObject.FindGameObjectWithTag("Player");
+        audioSources = GetComponents<AudioSource>();
+        day = GameObject.FindGameObjectWithTag("Player").GetComponent<LivingEntity>().day;
+        Damage += day * DayPlusDamage;
+        nav.speed += day * DayPlusSpeed;
+        health += day * DayPlusHealth;
+
     }
 
     // Update is called once per frame
@@ -50,7 +63,27 @@ public class EnemyBehaviour : MonoBehaviour
         //죽지 않았을때, 공격 하지않을때 쫒아온다.
         if (!dead&&!Attack)
         {
+            if (!audioSources[0].isPlaying)
+            {
+                audioSources[0].Play();
+            }
+            audioSources[1].Stop();
             nav.SetDestination(follow.transform.position);
+        }
+        else
+        {
+            if (!dead && Attack)
+            {
+                if (!audioSources[1].isPlaying)
+                {
+                    audioSources[1].Play();
+                }
+            }
+            else
+            {
+                audioSources[1].Stop();
+            }
+            audioSources[0].Stop();
         }
  
 
@@ -77,8 +110,9 @@ public class EnemyBehaviour : MonoBehaviour
                 this.gameObject.tag = "Untagged";
                 nav.enabled = false;
                 //isTrigger를 활성화하여 물리적으로 부딪힘이 없어짐
-                Collider.isTrigger = true;
+                Collider.enabled = false;
 
+                audioSources[2].Play();
                 //몬스터 오브젝트 삭제(5초후)
                 Destroy(gameObject, 5f);
             }
