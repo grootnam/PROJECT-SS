@@ -18,6 +18,7 @@ public class LivingEntity : MonoBehaviour
     public bool isDead; // 죽었는가?
 
     public Slider hpBar;
+    public Text surviveDay;
 
     public GameObject ReceiveDamageEffect;
 
@@ -29,6 +30,8 @@ public class LivingEntity : MonoBehaviour
         thirsty = startingThirsty;
         day = 0;
         ReceiveDamageEffect.SetActive(false);
+
+        surviveDay.text = day.ToString();
     }
 
     public void TakeHit(float damage)
