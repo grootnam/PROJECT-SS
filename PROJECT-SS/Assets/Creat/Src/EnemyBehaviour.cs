@@ -48,7 +48,6 @@ public class EnemyBehaviour : MonoBehaviour
         Damage += day * DayPlusDamage;
         nav.speed += day * DayPlusSpeed;
         health += day * DayPlusHealth;
-
     }
 
     // Update is called once per frame
