@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LivingEntity : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class LivingEntity : MonoBehaviour
     public float thirsty; // 목마름
     public bool isDead; // 죽었는가?
 
+    // status ui 
     public Slider hpBar;
     public Text surviveDay;
 
@@ -51,5 +53,6 @@ public class LivingEntity : MonoBehaviour
     {
         isDead = true;
         //GameObject.Destroy(gameObject);
+        SceneManager.LoadScene("End");
     }
 }

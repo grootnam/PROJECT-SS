@@ -8690,7 +8690,7 @@ PrefabInstance:
       objectReference: {fileID: 2066706481}
     - target: {fileID: 1125336684, guid: 5670a6053a802c84a9dc680c8c3dbd0f, type: 3}
       propertyPath: isDead
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1125336684, guid: 5670a6053a802c84a9dc680c8c3dbd0f, type: 3}
       propertyPath: ReceiveDamageEffect
