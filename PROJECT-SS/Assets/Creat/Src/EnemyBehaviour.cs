@@ -4,6 +4,8 @@ using System.Collections.Specialized;
 using UnityEngine;
 using UnityEngine.AI;
 using System;
+using System.Security.Cryptography;
+
 public class EnemyBehaviour : MonoBehaviour
 {
     //체력
@@ -27,7 +29,6 @@ public class EnemyBehaviour : MonoBehaviour
     //움직임
     Quaternion rotation = Quaternion.identity;
     Rigidbody EnemyRigidbody;
-
     private bool Attack;
 
     //오디오소스
@@ -35,6 +36,8 @@ public class EnemyBehaviour : MonoBehaviour
 
     //LivingEntity에서 day가져옴
     private int day;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -67,7 +70,16 @@ public class EnemyBehaviour : MonoBehaviour
                 audioSources[0].Play();
             }
             audioSources[1].Stop();
-            nav.SetDestination(follow.transform.position);
+            if (nav.stoppingDistance >= Vector3.Distance(follow.transform.position, transform.position))
+            {
+                nav.Stop();
+            }
+            else
+            {
+                nav.Resume();
+                nav.SetDestination(follow.transform.position);
+            }
+            
         }
         else
         {
