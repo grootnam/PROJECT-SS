@@ -16,11 +16,13 @@ public class LivingEntity : MonoBehaviour
     public float shield; // 보호막
     public float hungry; // 배고픔
     public float thirsty; // 목마름
+    public int gold; //골드
     public bool isDead; // 죽었는가?
 
     // status ui 
     public Slider hpBar;
     public Text surviveDay;
+    public Text goldtext;
 
     public GameObject ReceiveDamageEffect;
 
@@ -30,10 +32,12 @@ public class LivingEntity : MonoBehaviour
         shield = startingShield;
         hungry = startingHungry;
         thirsty = startingThirsty;
+        gold = 0;
         day = 0;
         ReceiveDamageEffect.SetActive(false);
 
         surviveDay.text = day.ToString();
+        goldtext.text = gold.ToString();
     }
 
     public void TakeHit(float damage)
