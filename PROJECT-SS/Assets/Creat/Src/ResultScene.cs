@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ResultScene : MonoBehaviour
 {
     LivingEntity livingEntity;
-    public GameObject player;
+    GameObject player;
     public Text result;
 
     // Start is called before the first frame update
@@ -16,7 +16,12 @@ public class ResultScene : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         livingEntity = player.GetComponent<LivingEntity>();
         result.text = livingEntity.day.ToString();
-        result.text += "일";
+        result.text += " days";
+        
+        GameObject.Destroy(GameObject.Find("Main Camera"));
+        GameObject.Destroy(GameObject.Find("ingameUIcanvas"));
+        GameObject.Destroy(GameObject.Find("GameController"));
+        GameObject.Destroy(GameObject.Find("Soldier_marine"));
     }
 
 
