@@ -163,8 +163,11 @@ MonoBehaviour:
   shield: 0
   hungry: 0
   thirsty: 0
+  gold: 0
   isDead: 0
   hpBar: {fileID: 0}
+  surviveDay: {fileID: 0}
+  goldtext: {fileID: 0}
   ReceiveDamageEffect: {fileID: 0}
 --- !u!114 &1125336685
 MonoBehaviour:
