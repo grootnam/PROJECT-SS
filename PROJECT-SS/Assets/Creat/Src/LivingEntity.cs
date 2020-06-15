@@ -11,13 +11,13 @@ public class LivingEntity : MonoBehaviour
     public float startingShield;
     public float startingHungry;
     public float startingThirsty;
-    public float health; // 체력
-    public int day; //생존한 날 수
-    public float shield; // 보호막
-    public float hungry; // 배고픔
-    public float thirsty; // 목마름
-    public int gold; //골드
-    public bool isDead; // 죽었는가?
+    public float health;   // 체력
+    public int day;        //생존한 날 수
+    public float shield;   // 보호막
+    public float hungry;   // 배고픔
+    public float thirsty;  // 목마름
+    public int gold;       // 골드
+    public bool isDead;    // 죽었는가?
 
     // status ui 
     public Slider hpBar;

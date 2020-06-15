@@ -17,6 +17,9 @@ public class EnemyBehaviour : MonoBehaviour
     public float DayPlusDamage, DayPlusSpeed, DayPlusHealth;
     private Animator animator;
 
+    [SerializeField]
+    private GameObject go_gold_item_prefab;
+
     [NonSerialized]
     //해치웠나?
     public bool dead = false;
@@ -124,6 +127,7 @@ public class EnemyBehaviour : MonoBehaviour
                 Collider.enabled = false;
 
                 audioSources[2].Play();
+                Instantiate(go_gold_item_prefab, transform.position, Quaternion.identity);
                 //몬스터 오브젝트 삭제(5초후)
                 Destroy(gameObject, 5f);
             }
