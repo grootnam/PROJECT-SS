@@ -23,6 +23,7 @@ public class ResultScene : MonoBehaviour
         GameObject.Destroy(GameObject.Find("GameController"));
         GameObject.Destroy(GameObject.Find("Soldier_marine"));
         GameObject.Destroy(GameObject.Find("InGameBGM"));
+        GameObject.Destroy(GameObject.Find("EventSystem"));
     }
 
 

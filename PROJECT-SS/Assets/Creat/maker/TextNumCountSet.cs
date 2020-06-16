@@ -28,13 +28,11 @@ public class TextNumCountSet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textcount.text = Count.ToString();
+        textcount.text =  Count.ToString();
         CurrentJewerly = int.Parse(GameObject.Find("jewerly_text").GetComponent<Text>().text);
     }
     public void PlusText()
     {
-        Debug.Log(price * (Count + 1));
-        Debug.Log(CurrentJewerly);
         //보석보다 돈이 모자르면 증가안함.
         if(price*(Count+1)<=CurrentJewerly)
             Count += 1;

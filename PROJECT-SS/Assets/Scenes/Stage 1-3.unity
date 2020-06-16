@@ -8144,7 +8144,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: c8926ca6115d30a438278d8c2dfd6cd8, type: 3}
       propertyPath: m_Name
-      value: Container_Medium
+      value: WaterMaker
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c8926ca6115d30a438278d8c2dfd6cd8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8254,7 +8254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d28cc5a7b71f3934b9d570442afe98f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Maker: {fileID: 213330006045765253, guid: 6165c51463187444ea4014e587539a75, type: 3}
+  WhatMaker_0isWater_1isFood_2isMedicine: 0
 --- !u!136 &960661126
 CapsuleCollider:
   m_ObjectHideFlags: 0

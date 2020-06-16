@@ -39,9 +39,15 @@ public class Inventory : MonoBehaviour
             inventoryActivated = !inventoryActivated;
 
             if (inventoryActivated)
+            {
+                Time.timeScale = 0f;
                 OpenInventory();
+            }
             else
+            {
+                Time.timeScale = 1f;
                 CloseInventory();
+            }
         }
     }
 
