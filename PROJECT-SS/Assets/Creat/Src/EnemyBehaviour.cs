@@ -49,6 +49,7 @@ public class EnemyBehaviour : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
         Collider = GetComponent<CapsuleCollider>();
         follow = GameObject.FindGameObjectWithTag("Player");
+        //사운드 (0: 걸음소리 , 1: 공격 , 2: 죽음, 3: 등장)
         audioSources = GetComponents<AudioSource>();
         day = GameObject.FindGameObjectWithTag("Player").GetComponent<LivingEntity>().day;
         Damage += day * DayPlusDamage;
@@ -66,7 +67,7 @@ public class EnemyBehaviour : MonoBehaviour
     void move()
     {
         //죽지 않았을때, 공격 하지않을때 쫒아온다.
-        if (!dead&&!Attack)
+        if (!dead && !Attack)
         {
             if (!audioSources[0].isPlaying)
             {
@@ -82,7 +83,7 @@ public class EnemyBehaviour : MonoBehaviour
                 nav.Resume();
                 nav.SetDestination(follow.transform.position);
             }
-            
+
         }
         else
         {
@@ -99,12 +100,18 @@ public class EnemyBehaviour : MonoBehaviour
             }
             audioSources[0].Stop();
         }
- 
+
+        //공격 모션중엔 움직이지 마!!!라는 뜻.
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1f)
+        {
+            nav.Stop();
+        }
+
 
     }
     void rotate()
     {
-        if(!dead)
+        if(!dead&& !animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack"))
             transform.LookAt(follow.transform.position);
     }
     public void ReceiveDamage(float damage)
