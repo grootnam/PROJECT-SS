@@ -28,6 +28,7 @@ public class ProductionItem : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
+        transform.GetComponent<Outline>().enabled = true;
         if (Input.GetKeyDown(KeyCode.E))
         {
             // 열린 건 닫고, 닫힌 건 열기
@@ -47,6 +48,7 @@ public class ProductionItem : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        transform.GetComponent<Outline>().enabled = false;
         CloseMaker();
     }
     private void OpenMaker()
