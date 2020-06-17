@@ -24,7 +24,6 @@ public class ProductionItem : MonoBehaviour
         {
             Maker = GameObject.Find("ItemProduction").transform.Find("MedicineMaker").gameObject;
         }
-        
     }
     private void OnTriggerStay(Collider other)
     {
@@ -54,10 +53,12 @@ public class ProductionItem : MonoBehaviour
     private void OpenMaker()
     {
         Maker.SetActive(true);
+        GameObject.Find("ItemProduction").transform.Find("ProductPanel").gameObject.SetActive(true);
     }
     private void CloseMaker()
     {
         Maker.SetActive(false);
+        GameObject.Find("ItemProduction").transform.Find("ProductPanel").gameObject.SetActive(false);
     }
     // Update is called once per frame
     void Update()
