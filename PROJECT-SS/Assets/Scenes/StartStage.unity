@@ -15176,6 +15176,14 @@ PrefabInstance:
       propertyPath: gold
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1125336684, guid: 5670a6053a802c84a9dc680c8c3dbd0f, type: 3}
+      propertyPath: hungryBar
+      value: 
+      objectReference: {fileID: 744585511}
+    - target: {fileID: 1125336684, guid: 5670a6053a802c84a9dc680c8c3dbd0f, type: 3}
+      propertyPath: thirstyBar
+      value: 
+      objectReference: {fileID: 1752219281}
     - target: {fileID: 1125336687, guid: 5670a6053a802c84a9dc680c8c3dbd0f, type: 3}
       propertyPath: m_Constraints
       value: 116

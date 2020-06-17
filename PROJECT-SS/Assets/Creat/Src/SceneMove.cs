@@ -38,15 +38,15 @@ public class SceneMove : MonoBehaviour
     {
         if (other.gameObject == player)
         {
+            // set variable
             livingEntity.day++;
             livingEntity.hungry -= 7;
             livingEntity.thirsty -= 7;
-            livingEntity.surviveDay.text = livingEntity.day.ToString();
 
-            if (livingEntity.hungry <=0 || livingEntity.thirsty<=0)
-            {
-                livingEntity.isDead = true;
-            }
+            // set ui
+            livingEntity.surviveDay.text = livingEntity.day.ToString();
+            livingEntity.hungryBar.value = livingEntity.hungry;
+            livingEntity.thirstyBar.value = livingEntity.thirsty;
 
             switch (SceneManager.GetActiveScene().name)
             {
@@ -205,6 +205,12 @@ public class SceneMove : MonoBehaviour
                             break;
                     }
                     break;
+            }
+
+
+            if (livingEntity.hungry <= 0 || livingEntity.thirsty <= 0)
+            {
+                livingEntity.Die();
             }
 
 
