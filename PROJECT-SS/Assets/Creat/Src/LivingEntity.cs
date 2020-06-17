@@ -31,9 +31,9 @@ public class LivingEntity : MonoBehaviour
 
     // Upgrade
     public const int upgradeListNum = 9;
-    private bool[] upgradeAct = new bool[upgradeListNum]; // 강화 리스트 중 3개를 선택할 때, 선택된 리스트를 true로 만듦
-    private int[] upgradeLevel = new int[upgradeListNum]; // 현재 강화된 레벨
-    private int[] upgradeMaxLevel = new int[upgradeListNum]; // 강화 최대 레벨
+    public bool[] upgradeAct = new bool[upgradeListNum]; // 강화 리스트 중 3개를 선택할 때, 선택된 리스트를 true로 만듦
+    public int[] upgradeLevel = new int[upgradeListNum]; // 현재 강화된 레벨
+    public int[] upgradeMaxLevel = new int[upgradeListNum]; // 강화 최대 레벨
 
     public GameObject[] listIcon1;
     public GameObject[] listIcon2;
@@ -124,9 +124,10 @@ public class LivingEntity : MonoBehaviour
     public void GetUpgradeList()
     {
         // 첫 번째 칸 선택
-        int randIdx = UnityEngine.Random.Range(0, upgradeListNum);
         while (true)
         {
+            int randIdx = UnityEngine.Random.Range(0, upgradeListNum);
+
             if (!isRemainList())
                 break;
 
@@ -140,9 +141,10 @@ public class LivingEntity : MonoBehaviour
         }
          
         // 두 번째 칸 선택
-        randIdx = UnityEngine.Random.Range(0, upgradeListNum);
         while (true)
         {
+            int randIdx = UnityEngine.Random.Range(0, upgradeListNum);
+
             if (!isRemainList())
                 break;
 
@@ -156,9 +158,10 @@ public class LivingEntity : MonoBehaviour
         }
 
         // 세 번째 칸 선택
-        randIdx = UnityEngine.Random.Range(0, upgradeListNum);
         while (true)
         {
+            int randIdx = UnityEngine.Random.Range(0, upgradeListNum);
+
             if (!isRemainList())
                 break;
 
