@@ -21,6 +21,8 @@ public class LivingEntity : MonoBehaviour
 
     // status ui 
     public Slider hpBar;
+    public Slider hungryBar;
+    public Slider thirstyBar;
     public Text surviveDay;
     public Text goldtext;
 
@@ -49,14 +51,13 @@ public class LivingEntity : MonoBehaviour
         instanthit.SetActive(true);
         instanthit.transform.position = transform.position+Vector3.up;
 
-        if (health <= 0 && !isDead)
+        if (health <= 0)
             Die();
     }
 
-    protected void Die()
+    public void Die()
     {
         isDead = true;
-        //GameObject.Destroy(gameObject);
         SceneManager.LoadScene("End");
     }
 }

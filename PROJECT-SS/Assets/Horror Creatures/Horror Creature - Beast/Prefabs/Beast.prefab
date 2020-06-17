@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  Damage: 0
+  Damage: 5
   DayPlusDamage: 1
   DayPlusSpeed: 0.12
   DayPlusHealth: 5
