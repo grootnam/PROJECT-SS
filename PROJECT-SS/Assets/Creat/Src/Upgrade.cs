@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Upgrade : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Upgrade : MonoBehaviour
     // ui 열고 닫음에 관여하는 변수
     static bool isClosed = false;
     static bool flag = false;
+
 
     void Start()
     {
@@ -59,18 +61,35 @@ public class Upgrade : MonoBehaviour
         UpgradeUI.SetActive(true);
         UpgradeUIPanel.SetActive(true);
         UpgradeExp.SetActive(true);
+
         livingEntity.listIcon1[livingEntity.upgradeChoiced1].SetActive(true);
         livingEntity.listIcon2[livingEntity.upgradeChoiced2].SetActive(true);
         livingEntity.listIcon3[livingEntity.upgradeChoiced3].SetActive(true);
+
         livingEntity.expIcon1[livingEntity.upgradeChoiced1].SetActive(true);
         livingEntity.expIcon2[livingEntity.upgradeChoiced2].SetActive(true);
         livingEntity.expIcon3[livingEntity.upgradeChoiced3].SetActive(true);
+
         livingEntity.expTitle1[livingEntity.upgradeChoiced1].SetActive(true);
         livingEntity.expTitle2[livingEntity.upgradeChoiced2].SetActive(true);
         livingEntity.expTitle3[livingEntity.upgradeChoiced3].SetActive(true);
+
         livingEntity.expExp1[livingEntity.upgradeChoiced1].SetActive(true);
         livingEntity.expExp2[livingEntity.upgradeChoiced2].SetActive(true);
         livingEntity.expExp3[livingEntity.upgradeChoiced3].SetActive(true);
+
+        if (int.Parse(livingEntity.goldtext.text) < 100)
+        {
+            livingEntity.button1.SetActive(false);
+            livingEntity.button2.SetActive(false);
+            livingEntity.button3.SetActive(false);
+        }
+        else
+        {
+            livingEntity.button1.SetActive(true);
+            livingEntity.button2.SetActive(true);
+            livingEntity.button3.SetActive(true);
+        }
     }
 
     // close
