@@ -55,7 +55,11 @@ public class LivingEntity : MonoBehaviour
     public int upgradeChoiced2;
     public int upgradeChoiced3;
 
-    Gun gunStatus;
+    public GameObject button1;
+    public GameObject button2;
+    public GameObject button3;
+
+    Gun gunStatus; 
     PlayerMovement playerMovement;
 
 

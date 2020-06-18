@@ -35,6 +35,19 @@ public class Upgrade_refresh : MonoBehaviour
 
             // refresh
             livingEntity.GetUpgradeList();
+
+            if (int.Parse(livingEntity.goldtext.text) < 100)
+            {
+                livingEntity.button1.SetActive(false);
+                livingEntity.button2.SetActive(false);
+                livingEntity.button3.SetActive(false);
+            }
+            else
+            {
+                livingEntity.button1.SetActive(true);
+                livingEntity.button2.SetActive(true);
+                livingEntity.button3.SetActive(true);
+            }
             livingEntity.listIcon1[livingEntity.upgradeChoiced1].SetActive(true);
             livingEntity.listIcon2[livingEntity.upgradeChoiced2].SetActive(true);
             livingEntity.listIcon3[livingEntity.upgradeChoiced3].SetActive(true);

@@ -22152,6 +22152,18 @@ PrefabInstance:
       propertyPath: expExp3.Array.data[8]
       value: 
       objectReference: {fileID: 1856929207}
+    - target: {fileID: 1125336684, guid: 5670a6053a802c84a9dc680c8c3dbd0f, type: 3}
+      propertyPath: button2
+      value: 
+      objectReference: {fileID: 965106103}
+    - target: {fileID: 1125336684, guid: 5670a6053a802c84a9dc680c8c3dbd0f, type: 3}
+      propertyPath: button1
+      value: 
+      objectReference: {fileID: 350336245}
+    - target: {fileID: 1125336684, guid: 5670a6053a802c84a9dc680c8c3dbd0f, type: 3}
+      propertyPath: button3
+      value: 
+      objectReference: {fileID: 1863341242}
     - target: {fileID: 1125336687, guid: 5670a6053a802c84a9dc680c8c3dbd0f, type: 3}
       propertyPath: m_Constraints
       value: 116
