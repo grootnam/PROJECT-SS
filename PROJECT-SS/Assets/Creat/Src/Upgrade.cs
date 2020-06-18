@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Upgrade : MonoBehaviour
 {
+    LivingEntity livingEntity;
+
     // ui
     private GameObject UpgradeUI;
     private GameObject UpgradeUIPanel;
@@ -12,11 +14,6 @@ public class Upgrade : MonoBehaviour
     // ui 열고 닫음에 관여하는 변수
     static bool isClosed = false;
     static bool flag = false;
-
-    // 선택된 번호 
-    LivingEntity livingEntity;
-
-
 
     void Start()
     {

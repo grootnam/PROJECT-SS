@@ -40,8 +40,8 @@ public class SceneMove : MonoBehaviour
         {
             // set variable
             livingEntity.day++;
-            livingEntity.hungry -= 7;
-            livingEntity.thirsty -= 7;
+            livingEntity.hungry -= livingEntity.hungryDecreasePerDay;
+            livingEntity.thirsty -= livingEntity.thirstyDecreasePerDay;
 
             // set ui
             livingEntity.surviveDay.text = livingEntity.day.ToString();
