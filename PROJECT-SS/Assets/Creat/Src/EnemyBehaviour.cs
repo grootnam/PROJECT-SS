@@ -102,7 +102,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
 
         //공격 모션중엔 움직이지 마!!!라는 뜻.
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1f)
+        if (!dead&&animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1f)
         {
             nav.Stop();
         }

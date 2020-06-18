@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     public static bool inventoryActivated = false;
-    private int money = 0;  // 화폐 보유량
+    private int money=0;  // 화폐 보유량
     private Slot[] slots;   // 인벤토리 슬롯의 배열
 
     [SerializeField]
@@ -32,6 +32,7 @@ public class Inventory : MonoBehaviour
     void Update()
     {
         TryOpenInventory();
+        money = int.Parse(go_jewerlyText.text);
     }
 
     private void TryOpenInventory()
@@ -83,6 +84,8 @@ public class Inventory : MonoBehaviour
         // 획득한 Item이 장비가 아니면,
         if(Item.ItemType.Equipment != _item.itemType)
         {
+            money -= _item.itemCost*_count;
+            go_jewerlyText.text = money.ToString();
             for (int i = 0; i < slots.Length; i++)
             {
                 // 인벤토리에 이미 같은 item이 있을 때

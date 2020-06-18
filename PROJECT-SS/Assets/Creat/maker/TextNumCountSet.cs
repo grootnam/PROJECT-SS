@@ -17,9 +17,16 @@ public class TextNumCountSet : MonoBehaviour
 
     //현재 보석개수
     private int CurrentJewerly;
+
+    public Sprite WaterImage, FoodImage, MedicineImage;
+    private Item item;
+    [SerializeField]
+    private Inventory theInventory;
+
     // Start is called before the first frame update
     void Start()
     {
+        
         textcount=GetComponent<Text>();
         price = GetComponentInParent<Price>().price;
         Count = 0;
@@ -44,5 +51,33 @@ public class TextNumCountSet : MonoBehaviour
         {
             Count -= 1;
         }
+    }
+    
+    public void makeitem()
+    {
+        item = new Item();
+        if (GameObject.FindGameObjectWithTag("Maker").GetComponent<ProductionItem>().WhatMaker_0isWater_1isFood_2isMedicine==0)
+        {
+            item.itemName = "Water";
+            item.itemImage = WaterImage;
+            item.itemType = Item.ItemType.Used;
+            item.itemCost = 50;
+        }
+        else if (GameObject.FindGameObjectWithTag("Maker").GetComponent<ProductionItem>().WhatMaker_0isWater_1isFood_2isMedicine == 1)
+        {
+            item.itemName = "Food";
+            item.itemImage = FoodImage;
+            item.itemType = Item.ItemType.Used;
+            item.itemCost = 100;
+        }
+        else
+        {
+            item.itemName = "Medicine";
+            item.itemImage = MedicineImage;
+            item.itemType = Item.ItemType.Used;
+            item.itemCost = 200;
+        }
+        theInventory.AcquireItem(item, Count);
+        Count = 0;
     }
 }

@@ -8145,6 +8145,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterMaker
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c8926ca6115d30a438278d8c2dfd6cd8, type: 3}
+      propertyPath: m_TagString
+      value: Maker
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c8926ca6115d30a438278d8c2dfd6cd8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1

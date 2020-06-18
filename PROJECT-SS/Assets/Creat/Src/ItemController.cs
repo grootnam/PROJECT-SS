@@ -39,7 +39,6 @@ public class ItemController : MonoBehaviour
     GameObject rayhit;
     private void CheckItem()
     {
-        
         // 아이템 레이어 마스크에서, 플레이어의 방향으로 RayCast 했을 때,
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitInfo, range, itemLayerMask))
         {
