@@ -86,13 +86,18 @@ public class LivingEntity : MonoBehaviour
             upgradeLevel[i] = 0; //initail level = 0
             switch(i) //max level
             {
+                case 0:
+                case 2:
+                case 4:
+                    upgradeMaxLevel[i] = 100;
+                    break;
+                case 5:
                 case 6:
-                case 7:
                     upgradeMaxLevel[i] = 2;
                     break;
 
+                case 9:
                 case 10:
-                case 11:
                     upgradeMaxLevel[i] = 1;
                     break;
 
@@ -129,7 +134,7 @@ public class LivingEntity : MonoBehaviour
     {
         for (int i = 0; i < upgradeListNum; i++)
         {
-            if (!upgradeAct[i] && (upgradeLevel[i] != upgradeMaxLevel[i]))
+            if ((upgradeLevel[i] != upgradeMaxLevel[i]))
             {
                 return true;
                 break;
