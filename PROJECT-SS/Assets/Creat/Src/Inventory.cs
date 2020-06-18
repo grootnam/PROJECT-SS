@@ -7,14 +7,14 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     public static bool inventoryActivated = false;
-    private int money=0;  // 화폐 보유량
+    private int money = 0;    // 화폐 보유량
     private Slot[] slots;   // 인벤토리 슬롯의 배열
 
     [SerializeField]
     private GameObject go_InventoryBase;    // 인벤토리 창
 
     [SerializeField]
-    private GameObject Inventory_panel; // 블랙 패널
+    private GameObject Inventory_panel;     // 블랙 패널
 
     [SerializeField]
     private GameObject go_SlotsParent;      // 인벤토리 슬롯들의 컨테이너
@@ -23,9 +23,9 @@ public class Inventory : MonoBehaviour
     private Text go_jewerlyText;            // 화페 UI
 
 
-    // 인벤토리에 각 슬롯을 저장
     void Start()
     {
+        // 인벤토리에 각 슬롯을 저장한다.
         slots = go_SlotsParent.GetComponentsInChildren<Slot>();
     }
 
@@ -35,12 +35,13 @@ public class Inventory : MonoBehaviour
         money = int.Parse(go_jewerlyText.text);
     }
 
+    // * 인벤토리를 여는 조건을 검사하는 함수
     private void TryOpenInventory()
     {
         // 'I'를 누르면,
         if(Input.GetKeyDown(KeyCode.I))
         {
-            // 열린 건 닫고, 닫힌 건 열기
+            // 열린 건 닫고, 닫힌 건 열어준다.
             inventoryActivated = !inventoryActivated;
 
             if (inventoryActivated)
@@ -56,20 +57,21 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // 인벤토리 창 열기
+    // * 인벤토리 창 여는 함수
     private void OpenInventory()
     {
         go_InventoryBase.SetActive(true);
         Inventory_panel.SetActive(true);
     }
-    // 인벤토리 창 닫기
+
+    // * 인벤토리 창 닫는 함수
     private void CloseInventory()
     {
         go_InventoryBase.SetActive(false);
         Inventory_panel.SetActive(false);
     }
 
-    // 아이템을 획득(ItemController에서 사용)
+    // * 아이템을 획득(ItemController에서 사용) 함수
     public void AcquireItem(Item _item, int _count = 1)
     {
         // 획득한 Item이 화폐면, 
