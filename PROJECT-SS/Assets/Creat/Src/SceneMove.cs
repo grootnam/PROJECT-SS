@@ -38,15 +38,15 @@ public class SceneMove : MonoBehaviour
     {
         if (other.gameObject == player)
         {
+            // set variable
             livingEntity.day++;
             livingEntity.hungry -= 7;
             livingEntity.thirsty -= 7;
-            livingEntity.surviveDay.text = livingEntity.day.ToString();
 
-            if (livingEntity.hungry <=0 || livingEntity.thirsty<=0)
-            {
-                livingEntity.isDead = true;
-            }
+            // set ui
+            livingEntity.surviveDay.text = livingEntity.day.ToString();
+            livingEntity.hungryBar.value = livingEntity.hungry;
+            livingEntity.thirstyBar.value = livingEntity.thirsty;
 
             switch (SceneManager.GetActiveScene().name)
             {
@@ -55,7 +55,7 @@ public class SceneMove : MonoBehaviour
                     {
                         case "Goto_2-3":
                             SceneManager.LoadScene("Stage 2-3");
-                            meIcon_vector.y -= 40;
+                            meIcon_vector.y -= 36;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                     }
@@ -66,7 +66,7 @@ public class SceneMove : MonoBehaviour
                     {
                         case "Goto_1-3":
                             SceneManager.LoadScene("Stage 1-3");
-                            meIcon_vector.y += 40;
+                            meIcon_vector.y += 36;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             if (!visited103)
                             {
@@ -76,7 +76,7 @@ public class SceneMove : MonoBehaviour
                             break;
                         case "Goto_3-3":
                             SceneManager.LoadScene("Stage 3-3");
-                            meIcon_vector.y -= 40;
+                            meIcon_vector.y -= 36;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                     }
@@ -87,7 +87,7 @@ public class SceneMove : MonoBehaviour
                     {
                         case "Goto_3-2":
                             SceneManager.LoadScene("Stage 3-2");
-                            meIcon_vector.x += 40;
+                            meIcon_vector.x += 36;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                     }
@@ -103,12 +103,12 @@ public class SceneMove : MonoBehaviour
                                 Destroy(map301);
                                 visited301 = true;
                             }
-                            meIcon_vector.x -= 40;
+                            meIcon_vector.x -= 36;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                         case "Goto_3-3":
                             SceneManager.LoadScene("Stage 3-3");
-                            meIcon_vector.x += 40;
+                            meIcon_vector.x += 36;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                     }
@@ -120,22 +120,22 @@ public class SceneMove : MonoBehaviour
                     {
                         case "Goto_2-3":
                             SceneManager.LoadScene("Stage 2-3");
-                            meIcon_vector.y += 40;
+                            meIcon_vector.y += 36;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                         case "Goto_3-2":
                             SceneManager.LoadScene("Stage 3-2");
-                            meIcon_vector.x -= 40;
+                            meIcon_vector.x -= 36;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                         case "Goto_3-4":
                             SceneManager.LoadScene("Stage 3-4");
-                            meIcon_vector.x += 40;
+                            meIcon_vector.x += 36;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                         case "Goto_4-3":
                             SceneManager.LoadScene("Stage 4-3");
-                            meIcon_vector.y -= 40;
+                            meIcon_vector.y -= 36;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                     }
@@ -146,12 +146,12 @@ public class SceneMove : MonoBehaviour
                     {
                         case "Goto_3-3":
                             SceneManager.LoadScene("Stage 3-3");
-                            meIcon_vector.x -= 40;
+                            meIcon_vector.x -= 36;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                         case "Goto_3-5":
                             SceneManager.LoadScene("Stage 3-5");
-                            meIcon_vector.x += 40;
+                            meIcon_vector.x += 36;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             if (!visited305)
                             {
@@ -167,7 +167,7 @@ public class SceneMove : MonoBehaviour
                     {
                         case "Goto_3-4":
                             SceneManager.LoadScene("Stage 3-4");
-                            meIcon_vector.x -= 40;
+                            meIcon_vector.x -= 36;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                     }
@@ -178,12 +178,12 @@ public class SceneMove : MonoBehaviour
                     {
                         case "Goto_3-3":
                             SceneManager.LoadScene("Stage 3-3");
-                            meIcon_vector.y += 40;
+                            meIcon_vector.y += 36;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                         case "Goto_5-3":
                             SceneManager.LoadScene("Stage 5-3");
-                            meIcon_vector.y -= 40;
+                            meIcon_vector.y -= 36;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             if (!visited503)
                             {
@@ -200,11 +200,17 @@ public class SceneMove : MonoBehaviour
                     {
                         case "Goto_4-3":
                             SceneManager.LoadScene("Stage 4-3");
-                            meIcon_vector.y += 40;
+                            meIcon_vector.y += 36;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                     }
                     break;
+            }
+
+
+            if (livingEntity.hungry <= 0 || livingEntity.thirsty <= 0)
+            {
+                livingEntity.Die();
             }
 
 

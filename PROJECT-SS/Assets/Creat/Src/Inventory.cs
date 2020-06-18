@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,11 +7,14 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     public static bool inventoryActivated = false;
-    private int money = 0;  // 화폐 보유량
+    private int money=0;  // 화폐 보유량
     private Slot[] slots;   // 인벤토리 슬롯의 배열
 
     [SerializeField]
     private GameObject go_InventoryBase;    // 인벤토리 창
+
+    [SerializeField]
+    private GameObject Inventory_panel; // 블랙 패널
 
     [SerializeField]
     private GameObject go_SlotsParent;      // 인벤토리 슬롯들의 컨테이너
@@ -28,6 +32,7 @@ public class Inventory : MonoBehaviour
     void Update()
     {
         TryOpenInventory();
+        money = int.Parse(go_jewerlyText.text);
     }
 
     private void TryOpenInventory()
@@ -39,9 +44,15 @@ public class Inventory : MonoBehaviour
             inventoryActivated = !inventoryActivated;
 
             if (inventoryActivated)
+            {
+                Time.timeScale = 0f;
                 OpenInventory();
+            }
             else
+            {
+                Time.timeScale = 1f;
                 CloseInventory();
+            }
         }
     }
 
@@ -49,11 +60,13 @@ public class Inventory : MonoBehaviour
     private void OpenInventory()
     {
         go_InventoryBase.SetActive(true);
+        Inventory_panel.SetActive(true);
     }
     // 인벤토리 창 닫기
     private void CloseInventory()
     {
         go_InventoryBase.SetActive(false);
+        Inventory_panel.SetActive(false);
     }
 
     // 아이템을 획득(ItemController에서 사용)
@@ -71,6 +84,8 @@ public class Inventory : MonoBehaviour
         // 획득한 Item이 장비가 아니면,
         if(Item.ItemType.Equipment != _item.itemType)
         {
+            money -= _item.itemCost*_count;
+            go_jewerlyText.text = money.ToString();
             for (int i = 0; i < slots.Length; i++)
             {
                 // 인벤토리에 이미 같은 item이 있을 때

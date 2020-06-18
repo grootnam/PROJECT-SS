@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -3661115383677975616}
   - component: {fileID: 8637716722068651902}
   - component: {fileID: 4812612086638541247}
+  - component: {fileID: 6014376726443084233}
   m_Layer: 8
   m_Name: GoldCoins
   m_TagString: Item
@@ -124,3 +125,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.07, y: 0.03, z: 0.07}
   m_Center: {x: 0.0032892236, y: 0.010496559, z: 0.0014966959}
+--- !u!114 &6014376726443084233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950871307682000}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0, g: 1, b: 0.09359622, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

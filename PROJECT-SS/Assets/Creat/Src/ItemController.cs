@@ -36,23 +36,30 @@ public class ItemController : MonoBehaviour
         }
     }
 
+    GameObject rayhit;
     private void CheckItem()
     {
         // 아이템 레이어 마스크에서, 플레이어의 방향으로 RayCast 했을 때,
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitInfo, range, itemLayerMask))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitInfo, range, itemLayerMask))
         {
             // 충돌한 물체가 "Item" 태그를 갖는다면
-            if(hitInfo.transform.tag == "Item")
+            if (hitInfo.transform.tag == "Item")
             {
+                //먹을수 있는 아이템인 경우 테두리 효과 ON!
+                hitInfo.transform.GetComponent<Outline>().enabled = true;
+                rayhit = hitInfo.transform.gameObject;
                 // 먹을 수 있는 아이템인 것을 표시
                 ItemInfoAppear();
             }
         }
         // RayCast 결과 충돌하지 않았다면, 그 반대
         else
-        {   
+        {
+            if(rayhit!=null)
+                rayhit.GetComponent<Outline>().enabled = false;
             ItemInfoDisappear();
         }
+
     }
     private void ItemInfoAppear()
     {
