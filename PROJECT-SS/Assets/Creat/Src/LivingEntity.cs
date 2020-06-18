@@ -38,8 +38,17 @@ public class LivingEntity : MonoBehaviour
     public GameObject[] listIcon1;
     public GameObject[] listIcon2;
     public GameObject[] listIcon3;
+    public GameObject[] expIcon1;
+    public GameObject[] expIcon2;
+    public GameObject[] expIcon3;
+    public GameObject[] expTitle1;
+    public GameObject[] expTitle2;
+    public GameObject[] expTitle3;
+    public GameObject[] expExp1;
+    public GameObject[] expExp2;
+    public GameObject[] expExp3;
 
-    // upgrade selected
+    // upgrade selected index
     public int upgradeChoiced1;
     public int upgradeChoiced2;
     public int upgradeChoiced3;
