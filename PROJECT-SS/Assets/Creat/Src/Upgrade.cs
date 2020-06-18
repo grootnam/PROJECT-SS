@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class Upgrade : MonoBehaviour
 {
+    LivingEntity livingEntity;
+
     // ui
     private GameObject UpgradeUI;
     private GameObject UpgradeUIPanel;
     private GameObject UpgradeExp;
+    private GameObject Ui_interactive;
 
     // ui 열고 닫음에 관여하는 변수
     static bool isClosed = false;
     static bool flag = false;
-
-    // 선택된 번호 
-    LivingEntity livingEntity;
-
-
 
     void Start()
     {
@@ -24,13 +22,16 @@ public class Upgrade : MonoBehaviour
         UpgradeUI = GameObject.Find("Upgrade").transform.Find("upgrade_base").gameObject;
         UpgradeUIPanel = GameObject.Find("Upgrade").transform.Find("upgrade_panel").gameObject;
         UpgradeExp = GameObject.Find("Upgrade").transform.Find("upgrade_explicate").gameObject;
+        Ui_interactive = GameObject.Find("ItemProduction").transform.Find("UI_InterActive").gameObject;
     }
 
     private void OnTriggerStay(Collider other)
     {
+        Ui_interactive.SetActive(true);
         transform.GetComponent<Outline>().enabled = true;
         if (Input.GetKeyDown(KeyCode.E))
         {
+            Ui_interactive.SetActive(false);
             // 열린 건 닫고, 닫힌 건 열기
             isClosed = !isClosed;
             if (!isClosed)
@@ -47,6 +48,7 @@ public class Upgrade : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        Ui_interactive.SetActive(false);
         transform.GetComponent<Outline>().enabled = false;
         CloseUpgradeUI();
     }

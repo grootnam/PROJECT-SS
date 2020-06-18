@@ -19,6 +19,8 @@ public class LivingEntity : MonoBehaviour
     public float thirsty;  // 목마름
     public int gold;       // 골드
     public bool isDead;    // 죽었는가?
+    public int hungryDecreasePerDay;
+    public int thirstyDecreasePerDay;
 
     // status ui 
     public Slider hpBar;
@@ -53,6 +55,10 @@ public class LivingEntity : MonoBehaviour
     public int upgradeChoiced2;
     public int upgradeChoiced3;
 
+    Gun gunStatus;
+    PlayerMovement playerMovement;
+
+
     protected virtual void Start()
     {
         // variable
@@ -60,9 +66,14 @@ public class LivingEntity : MonoBehaviour
         shield = startingShield;
         hungry = startingHungry;
         thirsty = startingThirsty;
+        hungryDecreasePerDay = 7;
+        thirstyDecreasePerDay = 7;
         gold = 0;
         day = 0;
         ReceiveDamageEffect.SetActive(false);
+
+        gunStatus = GameObject.Find("weapon_m4").GetComponent<Gun>();
+        playerMovement = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
 
         // ui
         surviveDay.text = day.ToString();
@@ -72,16 +83,21 @@ public class LivingEntity : MonoBehaviour
         {
             // 강화 관련 변수 초기화
             upgradeAct[i] = false;
-            upgradeLevel[i] = 0;
-            switch(i)
+            upgradeLevel[i] = 0; //initail level = 0
+            switch(i) //max level
             {
+                case 0:
+                case 2:
+                case 4:
+                    upgradeMaxLevel[i] = 100;
+                    break;
+                case 5:
                 case 6:
-                case 7:
                     upgradeMaxLevel[i] = 2;
                     break;
 
+                case 9:
                 case 10:
-                case 11:
                     upgradeMaxLevel[i] = 1;
                     break;
 
@@ -118,7 +134,7 @@ public class LivingEntity : MonoBehaviour
     {
         for (int i = 0; i < upgradeListNum; i++)
         {
-            if (!upgradeAct[i] && (upgradeLevel[i] != upgradeMaxLevel[i]))
+            if ((upgradeLevel[i] != upgradeMaxLevel[i]))
             {
                 return true;
                 break;
@@ -183,6 +199,51 @@ public class LivingEntity : MonoBehaviour
             }
         }
     }
+
+    public void ApplyUpgrade(int upgradeIdx)
+    {
+        switch(upgradeIdx)
+        {
+            case 0: //무기 공격력 증가
+                gunStatus.damage += 1;
+                break;
+
+            case 1: //무기 연사력 증가 = 발사간격 감소
+                gunStatus.fireDelayTime *= 0.9f;
+                break;
+
+            case 2: //무기 장전시간 감소
+                gunStatus.reloadTime *= 0.9f;
+                break;
+
+            case 3: //플레이어 이속 증가
+                playerMovement.walkSpeed *= 1.1f;
+                playerMovement.runSpeed *= 1.1f;
+                playerMovement.turnSpeed *= 1.1f;
+                break;
+
+            case 4: //플레이어 체력 증가
+                health *= 1.1f;
+                hpBar.maxValue *= 1.1f;
+                break;
+
+            case 5: //배고픔 감소량 감소
+                hungryDecreasePerDay -= 1;
+                break;
+
+            case 6: //목마름 감소량 감소
+                thirstyDecreasePerDay -= 1;
+                break;
+
+            case 7: //화폐 획득량 증가
+                break;
+
+            case 8: //장전하는 탄 수 증가
+                gunStatus.magSize += 3;
+                break;
+        }
+    }
+
 }
 
 
