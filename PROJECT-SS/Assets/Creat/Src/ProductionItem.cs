@@ -11,9 +11,9 @@ public class ProductionItem : MonoBehaviour
 
 
     private GameObject Ui_interactive;
-    static bool flag=false;
+    static bool flag = false;
     public int WhatMaker_0isWater_1isFood_2isMedicine; //0은 WaterMaker, 1은 FoodMaker, 2은 Medicine
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class ProductionItem : MonoBehaviour
         {
             Maker = GameObject.Find("ItemProduction").transform.Find("WaterMaker").gameObject;
         }
-        else if(WhatMaker_0isWater_1isFood_2isMedicine == 1)
+        else if (WhatMaker_0isWater_1isFood_2isMedicine == 1)
         {
             Maker = GameObject.Find("ItemProduction").transform.Find("FoodMaker").gameObject;
         }
@@ -73,12 +73,12 @@ public class ProductionItem : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.E)&& !flag)
+        if (Input.GetKeyDown(KeyCode.E) && !flag)
         {
             Time.timeScale = 1f;
             CloseMaker();
         }
         flag = false;
     }
-   
+
 }

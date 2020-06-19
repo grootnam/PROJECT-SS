@@ -9,53 +9,52 @@ public class TextNumCountSet : MonoBehaviour
     [NonSerialized]
     public Text textcount;
 
-    //상품갯수
-    int Count;
+    int count;  // 상품갯수
+    int price;  // 상품가격
+    private int currentJewerly;  //현재 보석개수
 
-    //상품가격
-    int price;
-
-    //현재 보석개수
-    private int CurrentJewerly;
-
-    public Sprite WaterImage, FoodImage, MedicineImage;
+    public Sprite WaterImage, FoodImage, MedicineImage; // 제작 아이템의 이미지
     private Item item;
+
     [SerializeField]
     private Inventory theInventory;
 
     // Start is called before the first frame update
     void Start()
-    {
-        
+    {    
         textcount=GetComponent<Text>();
         price = GetComponentInParent<Price>().price;
-        Count = 0;
+        count = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        textcount.text =  Count.ToString();
-        CurrentJewerly = int.Parse(GameObject.Find("jewerly_text").GetComponent<Text>().text);
+        textcount.text =  count.ToString();
+        currentJewerly = int.Parse(GameObject.Find("jewerly_text").GetComponent<Text>().text);
     }
+
+    // 제작할 개수를 +하는 함수
     public void PlusText()
     {
-        //보석보다 돈이 모자르면 증가안함.
-        if(price*(Count+1)<=CurrentJewerly)
-            Count += 1;
+        // 지불 금액만큼 보석이 있을 때만 +
+        if(price * (count + 1) <= currentJewerly)
+            count += 1;
     }
+    // 제작할 개수를 -하는 함수
     public void MinusText()
     {
-        //0이하 안돼
-        if (Count >= 1)
+        // 0 이하가 안되게 -
+        if (count >= 1)
         {
-            Count -= 1;
+            count -= 1;
         }
     }
     
     public void makeitem()
     {
-        item = new Item();
+        // 새로운 아이템을 제작한다.
+        item = ScriptableObject.CreateInstance<Item>();
         if (GameObject.FindGameObjectWithTag("Maker").GetComponent<ProductionItem>().WhatMaker_0isWater_1isFood_2isMedicine==0)
         {
             item.itemName = "Water";
@@ -77,7 +76,10 @@ public class TextNumCountSet : MonoBehaviour
             item.itemType = Item.ItemType.Used;
             item.itemCost = 200;
         }
-        theInventory.AcquireItem(item, Count);
-        Count = 0;
+        // 인벤토리에 추가한다.
+        theInventory.AcquireItem(item, count);
+
+        // 제작할 개수를 다시 0으로 초기화한다.
+        count = 0;
     }
 }

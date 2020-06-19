@@ -9,18 +9,8 @@ public class MakeItem : MonoBehaviour
     private int itemcount;
     [SerializeField]
     private Inventory theInventory;
-   
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     public void makeitem()
     {
         itemcount = int.Parse(GameObject.Find("ItemCount").GetComponent<TextNumCountSet>().textcount.text);
