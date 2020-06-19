@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    public static bool inventoryActivated = false;
+    public bool inventoryActivated = false;
     private int money = 0;    // 화폐 보유량
     private Slot[] slots;   // 인벤토리 슬롯의 배열
 

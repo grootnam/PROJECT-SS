@@ -8,6 +8,7 @@ public class ProductionItem : MonoBehaviour
 {
     private GameObject Maker;
     public static bool MakerActivated = false;
+    bool OpenInventory;
 
     private bool NoEnemy;
     private GameObject Ui_interactive;
@@ -75,16 +76,22 @@ public class ProductionItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //적이 없을땐 Maker 콜라이더 비활성화
         NoEnemy= GameObject.FindGameObjectWithTag("Player").transform.GetComponent<PlayerMovement>().NoEnemy;
-
-        if (NoEnemy)
-        {
+        if (NoEnemy){
             transform.GetComponent<CapsuleCollider>().enabled = true;
         }
 
+       
+        OpenInventory = GameObject.Find("ingameUIcanvas").transform.Find("inventory").GetComponent<Inventory>().inventoryActivated;
+        //인벤토리가 열려있고 상호작용 Ui가 활성화 되어있으면 상호작용 Ui 끄기
+        if (OpenInventory&& Ui_interactive.active) 
+        {
+            Ui_interactive.SetActive(false);
+        }
 
-
-        if (Input.GetKeyDown(KeyCode.E) && !flag)
+        //인벤토리가 열려있지 않을때만 Maker 닫기가능
+        if (!OpenInventory && Input.GetKeyDown(KeyCode.E) && !flag)
         {
             Time.timeScale = 1f;
             CloseMaker();
