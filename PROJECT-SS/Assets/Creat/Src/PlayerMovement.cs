@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using System;
 public class PlayerMovement : MonoBehaviour
 {
     public float walkSpeed;
@@ -7,6 +7,9 @@ public class PlayerMovement : MonoBehaviour
     public float turnSpeed;
     public float targetRange;
     Transform target;
+
+    [NonSerialized]
+    public bool NoEnemy;
 
     Vector3 movement;
     Animator animator;
@@ -109,9 +112,21 @@ public class PlayerMovement : MonoBehaviour
 
     void GetTarget()
     {
+        
         GameObject[] taggedEnemys = GameObject.FindGameObjectsWithTag("Enemy");
         float closestDistance = Mathf.Infinity;
         Transform closestEnemy = null;
+
+        //씬 안에 몬스터가 없으면
+        if (taggedEnemys.Length == 0)
+        {
+            NoEnemy = true;
+        }
+        else
+        {
+            NoEnemy = false;
+        }
+
 
         // Enemy 태그가 붙은 Object들 각각 검사
         foreach (GameObject taggedEnemy in taggedEnemys)

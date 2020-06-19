@@ -9,11 +9,10 @@ public class ProductionItem : MonoBehaviour
     private GameObject Maker;
     public static bool MakerActivated = false;
 
-
+    private bool NoEnemy;
     private GameObject Ui_interactive;
     static bool flag = false;
     public int WhatMaker_0isWater_1isFood_2isMedicine; //0은 WaterMaker, 1은 FoodMaker, 2은 Medicine
-
 
     // Start is called before the first frame update
     void Start()
@@ -34,30 +33,34 @@ public class ProductionItem : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        Ui_interactive.SetActive(true);
-        transform.GetComponent<Outline>().enabled = true;
-        if (Input.GetKeyDown(KeyCode.E))
+        if (other.tag == "Player" && NoEnemy)
         {
-            Ui_interactive.SetActive(false);
-            // 열린 건 닫고, 닫힌 건 열기
-            MakerActivated = !MakerActivated;
-            if (MakerActivated)
+            Ui_interactive.SetActive(true);
+            transform.GetComponent<Outline>().enabled = true;
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                if (other.CompareTag("Player"))
+                Ui_interactive.SetActive(false);
+                // 열린 건 닫고, 닫힌 건 열기
+                MakerActivated = !MakerActivated;
+                if (MakerActivated)
                 {
-                    flag = true;
-                    Time.timeScale = 0f;
-                    OpenMaker();
+                    if (other.CompareTag("Player"))
+                    {
+                        flag = true;
+                        Time.timeScale = 0f;
+                        OpenMaker();
+                    }
                 }
-            }
 
+            }
         }
     }
-    private void OnTriggerExit(Collider other)
-    {
-        Ui_interactive.SetActive(false);
-        transform.GetComponent<Outline>().enabled = false;
-        CloseMaker();
+    private void OnTriggerExit(Collider other){
+        if (other.tag == "Player"){
+            Ui_interactive.SetActive(false);
+            transform.GetComponent<Outline>().enabled = false;
+            CloseMaker();
+        }
     }
     private void OpenMaker()
     {
@@ -72,6 +75,14 @@ public class ProductionItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        NoEnemy= GameObject.FindGameObjectWithTag("Player").transform.GetComponent<PlayerMovement>().NoEnemy;
+
+        if (NoEnemy)
+        {
+            transform.GetComponent<CapsuleCollider>().enabled = true;
+        }
+
+
 
         if (Input.GetKeyDown(KeyCode.E) && !flag)
         {
