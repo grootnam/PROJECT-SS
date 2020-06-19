@@ -710,6 +710,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: A_Doorway_Wide_4x4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2bfee1089fbf3b40ac6fcb699295d4d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a2bfee1089fbf3b40ac6fcb699295d4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4075,6 +4079,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: A_Doorway_Wide_4x4
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2bfee1089fbf3b40ac6fcb699295d4d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a2bfee1089fbf3b40ac6fcb699295d4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4511,11 +4519,11 @@ GameObject:
   m_Component:
   - component: {fileID: 326463652}
   m_Layer: 0
-  m_Name: Door
+  m_Name: Door (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &326463652
 Transform:
@@ -6736,7 +6744,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &419855050
 Transform:
@@ -7535,13 +7543,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1172408673}
     m_Modifications:
+    - target: {fileID: 100004, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_Name
       value: Door_6_R
       objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.31124687
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7549,7 +7565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.517
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalRotation.x
@@ -9864,9 +9880,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326463652}
     m_Modifications:
+    - target: {fileID: 100004, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_Name
       value: Door_6_L
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11979,6 +12003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a837bbfc371bcad4eadfa806d8aa6927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryActivated: 0
   go_InventoryBase: {fileID: 1718232315}
   Inventory_panel: {fileID: 1879569649}
   go_SlotsParent: {fileID: 259469369}
@@ -12824,7 +12849,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &845718884
 Transform:
@@ -17286,6 +17311,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1134698284}
+  - component: {fileID: 1134698285}
   m_Layer: 0
   m_Name: Gate_right
   m_TagString: Untagged
@@ -17309,6 +17335,18 @@ Transform:
   m_Father: {fileID: 1149999917}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1134698285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134698283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84397c0c5f12b0b4e85fdc8325c90628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1137830349
 GameObject:
   m_ObjectHideFlags: 0
@@ -17690,7 +17728,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1172408673
 Transform:
@@ -17845,6 +17883,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: A_Doorway_Wide_4x4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2bfee1089fbf3b40ac6fcb699295d4d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a2bfee1089fbf3b40ac6fcb699295d4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -17907,6 +17949,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: a2bfee1089fbf3b40ac6fcb699295d4d, type: 3}
       propertyPath: m_Name
       value: A_Doorway_Wide_4x4 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2bfee1089fbf3b40ac6fcb699295d4d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a2bfee1089fbf3b40ac6fcb699295d4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19911,6 +19957,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1326915272}
+  - component: {fileID: 1326915273}
   m_Layer: 0
   m_Name: Gate_up
   m_TagString: Untagged
@@ -19934,6 +19981,18 @@ Transform:
   m_Father: {fileID: 1149999917}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1326915273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326915271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84397c0c5f12b0b4e85fdc8325c90628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1336331703
 GameObject:
   m_ObjectHideFlags: 0
@@ -20360,13 +20419,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 419855050}
     m_Modifications:
+    - target: {fileID: 100004, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_Name
       value: Door_6_R
       objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.31124687
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.y
@@ -20374,7 +20441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.517
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalRotation.x
@@ -20526,6 +20593,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1378420344}
+  - component: {fileID: 1378420345}
   m_Layer: 0
   m_Name: Gate_left
   m_TagString: Untagged
@@ -20549,6 +20617,18 @@ Transform:
   m_Father: {fileID: 1149999917}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1378420345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378420343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84397c0c5f12b0b4e85fdc8325c90628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1378614323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21223,13 +21303,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 419855050}
     m_Modifications:
+    - target: {fileID: 100004, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_Name
       value: Door_6_L
       objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.3112469
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21237,7 +21325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.711
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalRotation.x
@@ -21523,6 +21611,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1422108586}
+  - component: {fileID: 1422108587}
   m_Layer: 0
   m_Name: Gate_down
   m_TagString: Untagged
@@ -21546,6 +21635,18 @@ Transform:
   m_Father: {fileID: 1149999917}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1422108587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422108585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84397c0c5f12b0b4e85fdc8325c90628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1423642134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21553,13 +21654,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 845718884}
     m_Modifications:
+    - target: {fileID: 100004, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_Name
       value: Door_6_L
       objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.3112469
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21567,7 +21676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.711
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalRotation.x
@@ -25027,13 +25136,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1172408673}
     m_Modifications:
+    - target: {fileID: 100004, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_Name
       value: Door_6_L
       objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.3112469
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.y
@@ -25041,7 +25158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.711
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalRotation.x
@@ -28034,9 +28151,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 326463652}
     m_Modifications:
+    - target: {fileID: 100004, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_Name
       value: Door_6_R
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29093,13 +29218,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 845718884}
     m_Modifications:
+    - target: {fileID: 100004, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_Name
       value: Door_6_R
       objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.31124687
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.y
@@ -29107,7 +29240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.517
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalRotation.x

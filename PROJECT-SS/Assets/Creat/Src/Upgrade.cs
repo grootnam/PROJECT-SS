@@ -16,8 +16,8 @@ public class Upgrade : MonoBehaviour
     // ui 열고 닫음에 관여하는 변수
     static bool isClosed = false;
     static bool flag = false;
-
-
+    bool OpenInventory;
+    private bool NoEnemy;
     void Start()
     {
         livingEntity = GameObject.FindWithTag("Player").GetComponent<LivingEntity>();
@@ -29,20 +29,23 @@ public class Upgrade : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        Ui_interactive.SetActive(true);
-        transform.GetComponent<Outline>().enabled = true;
-        if (Input.GetKeyDown(KeyCode.E))
+        if (other.tag == "Player" && NoEnemy)
         {
-            Ui_interactive.SetActive(false);
-            // 열린 건 닫고, 닫힌 건 열기
-            isClosed = !isClosed;
-            if (!isClosed)
+            Ui_interactive.SetActive(true);
+            transform.GetComponent<Outline>().enabled = true;
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                if (other.CompareTag("Player"))
+                Ui_interactive.SetActive(false);
+                // 열린 건 닫고, 닫힌 건 열기
+                isClosed = !isClosed;
+                if (!isClosed)
                 {
-                    flag = true;
-                    Time.timeScale = 0f;
-                    OpenUpgradeUI();
+                    if (other.CompareTag("Player"))
+                    {
+                        flag = true;
+                        Time.timeScale = 0f;
+                        OpenUpgradeUI();
+                    }
                 }
             }
         }
@@ -115,7 +118,20 @@ public class Upgrade : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !flag)
+        NoEnemy = GameObject.FindGameObjectWithTag("Player").transform.GetComponent<PlayerMovement>().NoEnemy;
+        if (NoEnemy)
+        {
+            transform.GetComponent<CapsuleCollider>().enabled = true;
+        }
+
+        OpenInventory = GameObject.Find("ingameUIcanvas").transform.Find("inventory").GetComponent<Inventory>().inventoryActivated;
+        //인벤토리가 열려있고 상호작용 Ui가 활성화 되어있으면 상호작용 Ui 끄기
+        if (OpenInventory && Ui_interactive.active)
+        {
+            Ui_interactive.SetActive(false);
+        }
+
+        if (!OpenInventory && Input.GetKeyDown(KeyCode.E) && !flag)
         {
             Time.timeScale = 1f;
             CloseUpgradeUI();

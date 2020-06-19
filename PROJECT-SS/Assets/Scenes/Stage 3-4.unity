@@ -2925,7 +2925,7 @@ GameObject:
   m_Component:
   - component: {fileID: 759630491}
   m_Layer: 0
-  m_Name: Door
+  m_Name: Door (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6765,6 +6765,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1682199520}
+  - component: {fileID: 1682199521}
   m_Layer: 0
   m_Name: Gate_left
   m_TagString: Untagged
@@ -6788,6 +6789,18 @@ Transform:
   m_Father: {fileID: 1382975658}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1682199521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682199519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84397c0c5f12b0b4e85fdc8325c90628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1753786515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7609,6 +7622,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1967353495}
+  - component: {fileID: 1967353496}
   m_Layer: 0
   m_Name: Gate_right
   m_TagString: Untagged
@@ -7632,6 +7646,18 @@ Transform:
   m_Father: {fileID: 1382975658}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1967353496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967353494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84397c0c5f12b0b4e85fdc8325c90628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1970423873
 PrefabInstance:
   m_ObjectHideFlags: 0

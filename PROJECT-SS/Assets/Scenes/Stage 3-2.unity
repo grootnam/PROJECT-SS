@@ -1424,9 +1424,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 999415081}
     m_Modifications:
+    - target: {fileID: 100004, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_Name
       value: Door_6_L
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1929,6 +1937,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 467853394}
+  - component: {fileID: 467853395}
   m_Layer: 0
   m_Name: Gate_left
   m_TagString: Untagged
@@ -1952,6 +1961,18 @@ Transform:
   m_Father: {fileID: 448176401}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &467853395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467853393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84397c0c5f12b0b4e85fdc8325c90628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &472784101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2888,11 +2909,11 @@ GameObject:
   m_Component:
   - component: {fileID: 733986557}
   m_Layer: 0
-  m_Name: Door
+  m_Name: Door (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &733986557
 Transform:
@@ -3627,6 +3648,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: A_Doorway_Wide_4x4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2bfee1089fbf3b40ac6fcb699295d4d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a2bfee1089fbf3b40ac6fcb699295d4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3953,7 +3978,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &999415081
 Transform:
@@ -3981,6 +4006,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: a2bfee1089fbf3b40ac6fcb699295d4d, type: 3}
       propertyPath: m_Name
       value: A_Doorway_Wide_4x4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a2bfee1089fbf3b40ac6fcb699295d4d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a2bfee1089fbf3b40ac6fcb699295d4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4043,6 +4072,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1006025198}
+  - component: {fileID: 1006025199}
   m_Layer: 0
   m_Name: Gate_right
   m_TagString: Untagged
@@ -4066,6 +4096,18 @@ Transform:
   m_Father: {fileID: 448176401}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1006025199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006025197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84397c0c5f12b0b4e85fdc8325c90628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1008842740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7225,9 +7267,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 999415081}
     m_Modifications:
+    - target: {fileID: 100004, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_Name
       value: Door_6_R
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 4094dbe72684800479c207e50cd65420, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7363,25 +7413,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1768108924}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1768108926 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420,
-    type: 3}
-  m_PrefabInstance: {fileID: 1768108924}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1768108927
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1768108926}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.2333755, y: 2.4279816, z: 0.12300885}
-  m_Center: {x: 0.0000005960466, y: 1.2236432, z: -0.000000055879365}
 --- !u!1001 &1785376024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8426,25 +8457,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2120132211}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2120132213 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420,
-    type: 3}
-  m_PrefabInstance: {fileID: 2120132211}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &2120132214
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120132213}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.2333755, y: 2.4279816, z: 0.12300885}
-  m_Center: {x: 0.0000005960466, y: 1.2236432, z: -0.000000055879365}
 --- !u!1 &2139629963
 GameObject:
   m_ObjectHideFlags: 0
