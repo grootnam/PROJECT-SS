@@ -8,26 +8,42 @@ using UnityEngine.SceneManagement;
 
 public class LivingEntity : MonoBehaviour
 {
-    public float startingHealth;
-    public float startingShield;
-    public float startingHungry;
-    public float startingThirsty;
-    public float health;   // 체력
-    public int day;        //생존한 날 수
-    public float shield;   // 보호막
+    public float startingHealth;    // 기본 체력
+    public float startingHungry;    // 기본 배고픔
+    public float startingThirsty;   // 기본 목마름
+
+    public int day;        // 생존한 날 수
+    
+    public float health;   // 체력       
     public float hungry;   // 배고픔
     public float thirsty;  // 목마름
-    public int gold;       // 골드
-    public bool isDead;    // 죽었는가?
-    public int hungryDecreasePerDay;
-    public int thirstyDecreasePerDay;
 
-    // status ui 
+    public int gold;       // 골드
+    public bool isDead;    // 생존여부
+
+    public int hungryDecreasePerDay;    // !배고픔 감소량
+    public int thirstyDecreasePerDay;   // !목마름 감소량
+
+    // 상태값 UI
     public Slider hpBar;
     public Slider hungryBar;
     public Slider thirstyBar;
     public Text surviveDay;
     public Text goldtext;
+    
+    // 강화값 UI
+    [SerializeField]
+    private Text[] enhancements;
+
+    // 강화 초기값
+    private float originGunDamage;    // 0번 강화 : 총 데미지
+    private float originFireSpeed;    // 1번 강화 : 총 연사 속도
+    private float originReloadSpeed;  // 2번 강화 : 총 장전 속도
+    private float originWalkSpeed;    // 3번 강화 : 플레이어 이동 속도
+    private float originMaxHealth;    // 4번 강화 : 최대 체력
+    private float originMaxHunger;    // 5번 강화 : 최대 허기
+    private float originMaxThirst;    // 6번 강화 : 최대 목마름
+    private int originMagSize;      // 7번 강화 : 탄창 사이즈
 
     public GameObject ReceiveDamageEffect;
 
@@ -65,19 +81,46 @@ public class LivingEntity : MonoBehaviour
 
     protected virtual void Start()
     {
-        // variable
+        // 시작하면 변수들을 기초값으로 초기화한다.
         health = startingHealth;
-        shield = startingShield;
         hungry = startingHungry;
         thirsty = startingThirsty;
+
         hungryDecreasePerDay = 7;
         thirstyDecreasePerDay = 7;
+
         gold = 0;
         day = 0;
+
         ReceiveDamageEffect.SetActive(false);
 
         gunStatus = GameObject.Find("weapon_m4").GetComponent<Gun>();
         playerMovement = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+
+
+        originGunDamage = gunStatus.damage;
+        enhancements[0].text = originGunDamage.ToString();
+
+        originFireSpeed = gunStatus.fireDelayTime;
+        enhancements[1].text = originFireSpeed.ToString();
+
+        originReloadSpeed = gunStatus.reloadTime;
+        enhancements[2].text = originReloadSpeed.ToString();
+
+        originWalkSpeed = playerMovement.walkSpeed;
+        enhancements[3].text = originWalkSpeed.ToString();
+
+        originMaxHealth = hpBar.maxValue;
+        enhancements[4].text = originMaxHealth.ToString();
+
+        originMaxHunger = hungryBar.maxValue;
+        enhancements[5].text = originMaxHunger.ToString();
+
+        originMaxThirst = thirstyBar.maxValue;
+        enhancements[6].text = originMaxThirst.ToString();
+
+        originMagSize = gunStatus.magSize;
+        enhancements[7].text = originMagSize.ToString();
 
         // ui
         surviveDay.text = day.ToString();
@@ -112,11 +155,51 @@ public class LivingEntity : MonoBehaviour
         }
         GetUpgradeList(); // 게임 시작 시 최초로 업그레이드 리스트 갱신
     }  
+    
+    // 상태값을 변경할 때 쓰는 함수
+    public void plusHealth(float plus)
+    {
+        health += plus;
+        if (health > hpBar.maxValue)
+            health = hpBar.maxValue;
+        if (health < 0)
+            health = 0;
+        hpBar.value = health;
+    }
+    public void plusHungry(float plus)
+    {
+        hungry += plus;
+        if (hungry > hungryBar.maxValue)
+            hungry = hungryBar.maxValue;
+        if (hungry < 0)
+            hungry = 0;
+        hungryBar.value = hungry;
+    }
+    public void plusThirsty(float plus)
+    {
+        thirsty += plus;
+        if (thirsty > thirstyBar.maxValue)
+            thirsty = thirstyBar.maxValue;
+        if (thirsty < 0)
+            thirsty = 0;
+        thirstyBar.value = thirsty;
+        
+    }
+    public void plusGold(int plus)
+    {
+        gold += plus;
+        goldtext.text = gold.ToString();
+    }
+    public void plusDay(int plus)
+    {
+        day += plus;
+        surviveDay.text = day.ToString();
+    }
 
+    // 공격 받았을 때의 함수
     public void TakeHit(float damage)
     {
-        health -= damage;
-        hpBar.value = health;
+        plusHealth(-damage);
 
         GameObject instanthit = Object.Instantiate<GameObject>(ReceiveDamageEffect);
         instanthit.SetActive(true);
@@ -126,12 +209,12 @@ public class LivingEntity : MonoBehaviour
             Die();
     }
 
+    // 캐릭터가 죽어 게임이 끝나는 함수
     public void Die()
     {
         isDead = true;
         SceneManager.LoadScene("End");
     }
-
 
     // 강화할 수 있는 내용이 남아있는가?
     public bool isRemainList()
@@ -210,40 +293,45 @@ public class LivingEntity : MonoBehaviour
         {
             case 0: //무기 공격력 증가
                 gunStatus.damage += 1;
+                enhancements[0].text = gunStatus.damage.ToString() + "<color=yellow>(+" + (gunStatus.damage - originGunDamage).ToString() + ")</color>";
                 break;
 
             case 1: //무기 연사력 증가 = 발사간격 감소
                 gunStatus.fireDelayTime *= 0.9f;
+                enhancements[1].text = gunStatus.fireDelayTime.ToString() + "<color=yellow>(+" + (gunStatus.fireDelayTime - originFireSpeed).ToString() + ")</color>";
                 break;
 
             case 2: //무기 장전시간 감소
                 gunStatus.reloadTime *= 0.9f;
+                enhancements[2].text = gunStatus.reloadTime.ToString() + "<color=yellow>(+" + (gunStatus.reloadTime - originReloadSpeed).ToString() + ")</color>";
                 break;
 
             case 3: //플레이어 이속 증가
                 playerMovement.walkSpeed *= 1.1f;
                 playerMovement.runSpeed *= 1.1f;
                 playerMovement.turnSpeed *= 1.1f;
+                enhancements[3].text = playerMovement.walkSpeed.ToString() + "<color=yellow>(+" + (playerMovement.walkSpeed - originWalkSpeed).ToString() + ")</color>";
                 break;
 
             case 4: //플레이어 체력 증가
                 health *= 1.1f;
                 hpBar.maxValue *= 1.1f;
+                enhancements[4].text = hpBar.maxValue.ToString() + "<color=yellow>(+" + (hpBar.maxValue - originMaxHealth).ToString() + ")</color>";
                 break;
 
             case 5: //배고픔 감소량 감소
                 hungryDecreasePerDay -= 1;
+                enhancements[5].text = hungryDecreasePerDay.ToString() + "<color=yellow>(+" + (hungryBar.maxValue - originMaxHunger).ToString() + ")</color>";
                 break;
 
             case 6: //목마름 감소량 감소
                 thirstyDecreasePerDay -= 1;
+                enhancements[6].text = thirstyDecreasePerDay.ToString() + "<color=yellow>(+" + (thirstyBar.maxValue - originMaxThirst).ToString() + ")</color>";
                 break;
 
-            case 7: //화폐 획득량 증가
-                break;
-
-            case 8: //장전하는 탄 수 증가
+            case 7: //장전하는 탄 수 증가
                 gunStatus.magSize += 3;
+                enhancements[7].text = gunStatus.magSize.ToString() + "<color=yellow>(+" + (gunStatus.magSize - originMagSize).ToString() + ")</color>";
                 break;
         }
     }

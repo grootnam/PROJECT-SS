@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,10 +24,17 @@ public class Inventory : MonoBehaviour
     private Text go_jewerlyText;            // 화페 UI
 
 
+    //other UI checking variable
+    GameObject upgrade;
+
+
+
     void Start()
     {
         // 인벤토리에 각 슬롯을 저장한다.
         slots = go_SlotsParent.GetComponentsInChildren<Slot>();
+        upgrade =  GameObject.Find("upgrade_base");
+        upgrade.SetActive(false);
     }
 
     void Update()
@@ -39,7 +47,7 @@ public class Inventory : MonoBehaviour
     private void TryOpenInventory()
     {
         // 'I'를 누르면,
-        if(Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I) && upgrade.activeSelf == false)
         {
             // 열린 건 닫고, 닫힌 건 열어준다.
             inventoryActivated = !inventoryActivated;
@@ -54,7 +62,9 @@ public class Inventory : MonoBehaviour
                 Time.timeScale = 1f;
                 CloseInventory();
             }
+            
         }
+        
     }
 
     // * 인벤토리 창 여는 함수

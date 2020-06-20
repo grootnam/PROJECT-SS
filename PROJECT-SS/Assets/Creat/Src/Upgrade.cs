@@ -18,6 +18,8 @@ public class Upgrade : MonoBehaviour
     static bool flag = false;
     bool OpenInventory;
     private bool NoEnemy;
+
+
     void Start()
     {
         livingEntity = GameObject.FindWithTag("Player").GetComponent<LivingEntity>();

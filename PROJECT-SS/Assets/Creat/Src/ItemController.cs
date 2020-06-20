@@ -8,7 +8,6 @@ public class ItemController : MonoBehaviour
     [SerializeField]
     private float range;
     private bool pickupActivated = false;   // 습득 가능할 시 true
-    private RaycastHit hitInfo;             // 충돌체 정보 저장
 
     [SerializeField]
     private LayerMask itemLayerMask;        // 아이템 레이어에만 반응하도록 레이어 마스크를 설정
@@ -16,81 +15,47 @@ public class ItemController : MonoBehaviour
     [SerializeField]
     private Inventory theInventory;         // 인벤토리
 
-    
+
+
     void Update()
     {
         CheckItem();
-        TryAction();        
     }
 
-    private void TryAction()
-    {
-        // E를 누르면,
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            // 획득할 수 있는 Item을 확인하고,
-            CheckItem();
-
-            // 할 수 있다면,
-            CanPickUp();
-        }
-    }
-
-    GameObject rayhit;
     private void CheckItem()
     {
-        // 아이템 레이어 마스크에서, 플레이어의 방향으로 RayCast 했을 때,
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitInfo, range, itemLayerMask))
+        // Scene내의 Item을 불러와 검사한다.
+        GameObject[] taggedItems = GameObject.FindGameObjectsWithTag("Item");
+        foreach (GameObject taggedItem in taggedItems)
         {
-            // 충돌한 물체가 "Item" 태그를 갖는다면
-            if (hitInfo.transform.tag == "Item")
+            // Player와의 거리를 구한다.
+            Vector3 playerPos = transform.position;
+            Vector3 objectPos = taggedItem.transform.position;
+            Vector3 distance = objectPos - playerPos;
+
+            // Item을 획득할 수 있는 사정거리 + 1 에 들어왔다면,
+            if (distance.magnitude < range + 1)
             {
-                //먹을수 있는 아이템인 경우 테두리 효과 ON!
-                hitInfo.transform.GetComponent<Outline>().enabled = true;
-                rayhit = hitInfo.transform.gameObject;
-                // 먹을 수 있는 아이템인 것을 표시
-                ItemInfoAppear();
+                // 초록색 Outline을 켜준다.
+                taggedItem.GetComponent<Outline>().enabled = true;
+
+                // 사거리 안에 들어왔다면,
+                if(distance.magnitude < range)
+                {
+                    Debug.Log(taggedItem.transform.GetComponent<ItemPickUp>().item.itemName + "획득");
+
+                    // 인벤토리에 넣어준다.
+                    theInventory.AcquireItem(taggedItem.transform.GetComponent<ItemPickUp>().item, 1);
+
+                    // 획득한 아이템을 삭제해준다.
+                    Destroy(taggedItem);
+                }
             }
-        }
-        // RayCast 결과 충돌하지 않았다면, 그 반대
-        else
-        {
-            if(rayhit!=null)
-                rayhit.GetComponent<Outline>().enabled = false;
-            ItemInfoDisappear();
-        }
-
-    }
-    private void ItemInfoAppear()
-    {
-        pickupActivated = true;
-        /*
-         * 아이템 위에 UI 효과를 넣어주는 것 구현!
-         */
-    }
-    private void ItemInfoDisappear()
-    {
-        pickupActivated = false;
-        /*
-         * 아이템 위에 UI 효과를 꺼주는 것 구현!
-         */
-    }
-
-    // 아이템 획득 가능하다면,
-    private void CanPickUp()
-    {
-        if (pickupActivated)
-        {
-            if (hitInfo.transform != null)
+            // 사정거리 밖이라면,
+            else
             {
-                Debug.Log(hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + "획득");
-
-                // 인벤토리에 넣어주기
-                theInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item, 1);
-                
-                // 획득 했으면 아이템 삭제 및 정보 꺼주기
-                Destroy(hitInfo.transform.gameObject);
-                ItemInfoDisappear();
+                // 초록색 Outline을 꺼준다.
+                taggedItem.GetComponent<Outline>().enabled = false;
             }
         }
     }

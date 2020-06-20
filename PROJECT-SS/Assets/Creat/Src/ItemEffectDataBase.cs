@@ -8,7 +8,7 @@ class ItemEffect
 {
     public string itemName; // 아이템 이름
     public string part;     // 아이템 적용 부분
-    public int num;         // 아이템 적용값
+    public float num;         // 아이템 적용값
 }
 
 
@@ -44,19 +44,13 @@ public class ItemEffectDataBase : MonoBehaviour
                     switch(itemEffects[x].part)
                     {
                         case HP:
-                            playerStatus.health += itemEffects[x].num;
-                            if (playerStatus.health > 100)
-                                playerStatus.health = 100;
+                            playerStatus.plusHealth(itemEffects[x].num);
                             break;
                         case THIRSTY:
-                            playerStatus.thirsty += itemEffects[x].num;
-                            if (playerStatus.thirsty > 100)
-                                playerStatus.thirsty = 100;
+                            playerStatus.plusThirsty(itemEffects[x].num);
                             break;
                         case HUNGRY:
-                            playerStatus.hungry += itemEffects[x].num;
-                            if (playerStatus.hungry > 100)
-                                playerStatus.hungry = 100;
+                            playerStatus.plusHungry(itemEffects[x].num);
                             break;
                     }
                     return;
