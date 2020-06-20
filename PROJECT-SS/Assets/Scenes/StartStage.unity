@@ -13046,6 +13046,7 @@ MonoBehaviour:
   Inventory_panel: {fileID: 1879569649}
   go_SlotsParent: {fileID: 259469369}
   go_jewerlyText: {fileID: 935186911}
+  getMoreMoney: 0
 --- !u!114 &776143128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24952,6 +24953,15 @@ PrefabInstance:
       propertyPath: enhancements.Array.data[7]
       value: 
       objectReference: {fileID: 18676160}
+    - target: {fileID: 1125336684, guid: 5670a6053a802c84a9dc680c8c3dbd0f, type: 3}
+      propertyPath: goldObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 5e723d90995dd3c409c2bdf9fe3237cb,
+        type: 2}
+    - target: {fileID: 1125336684, guid: 5670a6053a802c84a9dc680c8c3dbd0f, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 776143127}
     - target: {fileID: 1125336687, guid: 5670a6053a802c84a9dc680c8c3dbd0f, type: 3}
       propertyPath: m_Constraints
       value: 116

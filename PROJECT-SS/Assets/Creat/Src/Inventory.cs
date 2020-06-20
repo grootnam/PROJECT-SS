@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
@@ -27,6 +26,9 @@ public class Inventory : MonoBehaviour
     //other UI checking variable
     GameObject upgrade;
 
+    // [화폐획득량 증가] 강화 적용을 위한 변수
+    public int getMoreMoney;
+
 
 
     void Start()
@@ -35,6 +37,8 @@ public class Inventory : MonoBehaviour
         slots = go_SlotsParent.GetComponentsInChildren<Slot>();
         upgrade =  GameObject.Find("upgrade_base");
         upgrade.SetActive(false);
+
+        getMoreMoney = 0;
     }
 
     void Update()
@@ -88,7 +92,7 @@ public class Inventory : MonoBehaviour
         if(Item.ItemType.Money == _item.itemType)
         {
             // 보유금액 올려주고, UI에 반영
-            money += _item.itemCost;
+            money += _item.itemCost + getMoreMoney;
             go_jewerlyText.text = money.ToString();
             return;
         }

@@ -5,6 +5,7 @@ using System.Configuration;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.ComponentModel;
 
 public class LivingEntity : MonoBehaviour
 {
@@ -77,6 +78,7 @@ public class LivingEntity : MonoBehaviour
 
     Gun gunStatus; 
     PlayerMovement playerMovement;
+    public Inventory inventory;
 
 
     protected virtual void Start()
@@ -126,9 +128,9 @@ public class LivingEntity : MonoBehaviour
         surviveDay.text = day.ToString();
         goldtext.text = gold.ToString();
 
+        // 강화 관련 변수 초기화
         for (int i=0; i<9; i++)
         {
-            // 강화 관련 변수 초기화
             upgradeAct[i] = false;
             upgradeLevel[i] = 0; //initail level = 0
             switch(i) //max level
@@ -294,16 +296,19 @@ public class LivingEntity : MonoBehaviour
             case 0: //무기 공격력 증가
                 gunStatus.damage += 1;
                 enhancements[0].text = gunStatus.damage.ToString() + "<color=yellow>(+" + (gunStatus.damage - originGunDamage).ToString() + ")</color>";
+                Debug.Log("무기 공격력 증가");
                 break;
 
             case 1: //무기 연사력 증가 = 발사간격 감소
                 gunStatus.fireDelayTime *= 0.9f;
                 enhancements[1].text = gunStatus.fireDelayTime.ToString() + "<color=yellow>(+" + (gunStatus.fireDelayTime - originFireSpeed).ToString() + ")</color>";
+                Debug.Log("무기 연사력 증가");
                 break;
 
             case 2: //무기 장전시간 감소
                 gunStatus.reloadTime *= 0.9f;
                 enhancements[2].text = gunStatus.reloadTime.ToString() + "<color=yellow>(+" + (gunStatus.reloadTime - originReloadSpeed).ToString() + ")</color>";
+                Debug.Log("무기 장전시간 감소");
                 break;
 
             case 3: //플레이어 이속 증가
@@ -311,28 +316,39 @@ public class LivingEntity : MonoBehaviour
                 playerMovement.runSpeed *= 1.1f;
                 playerMovement.turnSpeed *= 1.1f;
                 enhancements[3].text = playerMovement.walkSpeed.ToString() + "<color=yellow>(+" + (playerMovement.walkSpeed - originWalkSpeed).ToString() + ")</color>";
+                Debug.Log("이속 증가");
                 break;
 
             case 4: //플레이어 체력 증가
                 health *= 1.1f;
                 hpBar.maxValue *= 1.1f;
                 enhancements[4].text = hpBar.maxValue.ToString() + "<color=yellow>(+" + (hpBar.maxValue - originMaxHealth).ToString() + ")</color>";
+                Debug.Log("체력 증가");
                 break;
 
             case 5: //배고픔 감소량 감소
                 hungryDecreasePerDay -= 1;
                 enhancements[5].text = hungryDecreasePerDay.ToString() + "<color=yellow>(+" + (hungryBar.maxValue - originMaxHunger).ToString() + ")</color>";
+                Debug.Log("배고픔 감소");
                 break;
 
             case 6: //목마름 감소량 감소
                 thirstyDecreasePerDay -= 1;
                 enhancements[6].text = thirstyDecreasePerDay.ToString() + "<color=yellow>(+" + (thirstyBar.maxValue - originMaxThirst).ToString() + ")</color>";
+                Debug.Log("목마름 감소");
                 break;
 
             case 7: //장전하는 탄 수 증가
                 gunStatus.magSize += 3;
                 enhancements[7].text = gunStatus.magSize.ToString() + "<color=yellow>(+" + (gunStatus.magSize - originMagSize).ToString() + ")</color>";
+                Debug.Log("장전 탄 수 증가");
                 break;
+
+            case 8: //화폐 획득량 증가
+                inventory.getMoreMoney += 2;
+                Debug.Log("화폐 획득량 증가");
+                break;
+
         }
     }
 
