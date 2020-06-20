@@ -481,9 +481,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   Damage: 5
-  DayPlusDamage: 1
-  DayPlusSpeed: 0.12
-  DayPlusHealth: 5
+  DayPlusDamage: 0.5
+  DayPlusSpeed: 0.08
+  DayPlusHealth: 3
   go_gold_item_prefab: {fileID: 1950871307682000, guid: 01348926c7cbb3347a006c37204131c3,
     type: 3}
   follow: {fileID: 106200, guid: 5670a6053a802c84a9dc680c8c3dbd0f, type: 3}
