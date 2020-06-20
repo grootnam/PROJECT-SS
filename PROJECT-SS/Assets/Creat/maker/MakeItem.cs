@@ -14,6 +14,12 @@ public class MakeItem : MonoBehaviour
     public void makeitem()
     {
         itemcount = int.Parse(GameObject.Find("ItemCount").GetComponent<TextNumCountSet>().textcount.text);
+        // 추가할 item이 0개라면, 안 만듦
+        if (itemcount == 0)
+        {
+            return;
+        }
+
         if (transform.parent.GetComponent<ProductionItem>().WhatMaker_0isWater_1isFood_2isMedicine == 0)
         {
             item.itemName = "Water";
