@@ -16,6 +16,8 @@ public class ItemController : MonoBehaviour
     private Inventory theInventory;         // 인벤토리
 
 
+    public AudioClip getCoinSound;
+
 
     void Update()
     {
@@ -46,6 +48,7 @@ public class ItemController : MonoBehaviour
 
                     // 인벤토리에 넣어준다.
                     theInventory.AcquireItem(taggedItem.transform.GetComponent<ItemPickUp>().item, 1);
+                    AudioSource.PlayClipAtPoint(getCoinSound, transform.position , 0.5f);
 
                     // 획득한 아이템을 삭제해준다.
                     Destroy(taggedItem);
