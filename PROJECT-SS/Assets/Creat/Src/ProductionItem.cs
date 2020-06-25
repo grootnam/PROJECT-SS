@@ -14,7 +14,7 @@ public class ProductionItem : MonoBehaviour
     private GameObject Ui_interactive;
     static bool flag = false;
     public int WhatMaker_0isWater_1isFood_2isMedicine; //0은 WaterMaker, 1은 FoodMaker, 2은 Medicine
-
+    private bool open;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +31,7 @@ public class ProductionItem : MonoBehaviour
             Maker = GameObject.Find("ItemProduction").transform.Find("MedicineMaker").gameObject;
         }
         Ui_interactive = GameObject.Find("ItemProduction").transform.Find("UI_InterActive").gameObject;
+        open = false;
     }
     private void OnTriggerStay(Collider other)
     {
@@ -39,6 +40,10 @@ public class ProductionItem : MonoBehaviour
             Ui_interactive.SetActive(true);
             transform.GetComponent<Outline>().enabled = true;
             if (Input.GetKeyDown(KeyCode.E))
+            {
+                open = true;
+            }
+            if (open)
             {
                 Ui_interactive.SetActive(false);
                 // 열린 건 닫고, 닫힌 건 열기
@@ -91,10 +96,14 @@ public class ProductionItem : MonoBehaviour
         }
 
         //인벤토리가 열려있지 않을때만 Maker 닫기가능
-        if (!OpenInventory && Input.GetKeyDown(KeyCode.E) && !flag)
+        if (!OpenInventory && open && !flag)
         {
-            Time.timeScale = 1f;
-            CloseMaker();
+            if (Input.GetKeyDown(KeyCode.E)||Input.GetKeyDown(KeyCode.Escape))
+            {
+                Time.timeScale = 1f;
+                CloseMaker();
+                open = !open;  
+            }
         }
         flag = false;
     }

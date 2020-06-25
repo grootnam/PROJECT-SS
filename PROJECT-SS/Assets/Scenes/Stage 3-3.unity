@@ -4428,6 +4428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 986234438}
+  - component: {fileID: 986234439}
   m_Layer: 0
   m_Name: Gate_up
   m_TagString: Untagged
@@ -4451,6 +4452,18 @@ Transform:
   m_Father: {fileID: 207742974}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &986234439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986234437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84397c0c5f12b0b4e85fdc8325c90628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1002747170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5214,6 +5227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1381888953}
+  - component: {fileID: 1381888954}
   m_Layer: 0
   m_Name: Gate_left
   m_TagString: Untagged
@@ -5237,6 +5251,18 @@ Transform:
   m_Father: {fileID: 207742974}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1381888954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381888952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84397c0c5f12b0b4e85fdc8325c90628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1403117781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5607,6 +5633,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1500063530}
+  - component: {fileID: 1500063531}
   m_Layer: 0
   m_Name: Gate_right
   m_TagString: Untagged
@@ -5630,6 +5657,18 @@ Transform:
   m_Father: {fileID: 207742974}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1500063531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500063529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84397c0c5f12b0b4e85fdc8325c90628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1511574238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8261,6 +8300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2125649299}
+  - component: {fileID: 2125649300}
   m_Layer: 0
   m_Name: Gate_down
   m_TagString: Untagged
@@ -8284,6 +8324,18 @@ Transform:
   m_Father: {fileID: 207742974}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2125649300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125649298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84397c0c5f12b0b4e85fdc8325c90628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2139790747 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100006, guid: 4094dbe72684800479c207e50cd65420,
