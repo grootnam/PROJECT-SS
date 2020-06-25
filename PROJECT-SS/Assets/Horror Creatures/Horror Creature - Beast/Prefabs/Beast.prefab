@@ -480,8 +480,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  Damage: 5
-  DayPlusDamage: 0.5
+  Damage: 3
+  DayPlusDamage: 0.3
   DayPlusSpeed: 0.08
   DayPlusHealth: 3
   go_gold_item_prefab: {fileID: 1950871307682000, guid: 01348926c7cbb3347a006c37204131c3,
@@ -809,7 +809,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5ef0f31fcf53fc1479098a3cb76c81b2, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
