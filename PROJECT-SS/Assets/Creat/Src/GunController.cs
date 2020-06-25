@@ -68,8 +68,9 @@ public class GunController : MonoBehaviour
 
     private void TryFire()
     {
+        bool GuideOpen = GameObject.Find("ingameUIcanvas").transform.Find("StartHelper").GetComponent<StartGuide>().GuideOpen;
         // 발사 조건 : Key, 연사 대기, 장전 중 X
-        if(Input.GetButton("Fire1") && currentFireDelayTime <= 0 && !isReload)
+        if (Input.GetButton("Fire1") && currentFireDelayTime <= 0 && !isReload&&!GuideOpen)
         {
             Fire();
         }
