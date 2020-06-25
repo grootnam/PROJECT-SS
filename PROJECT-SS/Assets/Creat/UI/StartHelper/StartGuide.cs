@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,17 +10,18 @@ public class StartGuide : MonoBehaviour
     public GameObject guide2;
     public GameObject guide3;
     public GameObject panel;
-    
+   
     private int clickNum;
-
+    [NonSerialized]
+    public bool GuideOpen;
     // 게임 시작 시, 일시정지시키고 첫 번째 가이드를 활성화
     void Start()
     {
         clickNum = 0;
         player.GetComponent<PlayerMovement>().enabled = false;
-        player.GetComponent<GunController>().enabled = false;
         guide1.SetActive(true);
         panel.SetActive(true);
+        GuideOpen = true;
     }
 
     // 마우스 입력을 받아 각각 다음 가이드를 출력한다.
@@ -52,7 +54,8 @@ public class StartGuide : MonoBehaviour
                 Debug.Log("Guide on..." + idx);
                 guide3.SetActive(false);
                 player.GetComponent<PlayerMovement>().enabled = true;
-                player.GetComponent<GunController>().enabled = true;
+                GuideOpen = false;
+                //player.GetComponent<GunController>().enabled = true;
                 gameObject.GetComponent<StartGuide>().enabled = false;
                 GameObject.Find("GuidePanel").SetActive(false);
                 break;

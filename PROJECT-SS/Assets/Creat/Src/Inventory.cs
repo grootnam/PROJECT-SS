@@ -107,7 +107,7 @@ public class Inventory : MonoBehaviour
                 // 인벤토리에 이미 같은 item이 있을 때
                 if(slots[i].item != null)
                 {
-                    // Count만 증가시킴
+                    // Count만 증가시킨다.
                     if (slots[i].item.itemName == _item.itemName)
                     {
                         slots[i].SetSlotCount(_count);
@@ -117,7 +117,7 @@ public class Inventory : MonoBehaviour
               
             }
         }
-        // 빈 칸이 있다면 칸을 앞으로 당겨주기
+        // 빈 칸이 있다면 아이템을 넣어준다.
         for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i].item == null)

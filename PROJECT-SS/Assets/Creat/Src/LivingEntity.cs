@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.ComponentModel;
+using System.Runtime.InteropServices;
 
 public class LivingEntity : MonoBehaviour
 {
@@ -37,14 +38,15 @@ public class LivingEntity : MonoBehaviour
     private Text[] enhancements;
 
     // 강화 초기값
-    private float originGunDamage;    // 0번 강화 : 총 데미지
-    private float originFireSpeed;    // 1번 강화 : 총 연사 속도
-    private float originReloadSpeed;  // 2번 강화 : 총 장전 속도
-    private float originWalkSpeed;    // 3번 강화 : 플레이어 이동 속도
-    private float originMaxHealth;    // 4번 강화 : 최대 체력
-    private float originMaxHunger;    // 5번 강화 : 최대 허기
-    private float originMaxThirst;    // 6번 강화 : 최대 목마름
-    private int originMagSize;      // 7번 강화 : 탄창 사이즈
+    private float originGunDamage;      // 0번 강화 : 총 데미지
+    private float originFireSpeed;      // 1번 강화 : 총 연사 속도
+    private float originReloadSpeed;    // 2번 강화 : 총 장전 속도
+    private float originWalkSpeed;      // 3번 강화 : 플레이어 이동 속도
+    private float originMaxHealth;      // 4번 강화 : 최대 체력
+    private float originHungryDecrease; // 5번 강화 : 최대 허기
+    private float originThirstyDecrease;// 6번 강화 : 최대 목마름
+    private int originMagSize;          // 7번 강화 : 탄창 사이즈
+    
 
     public GameObject ReceiveDamageEffect;
 
@@ -115,14 +117,16 @@ public class LivingEntity : MonoBehaviour
         originMaxHealth = hpBar.maxValue;
         enhancements[4].text = originMaxHealth.ToString();
 
-        originMaxHunger = hungryBar.maxValue;
-        enhancements[5].text = originMaxHunger.ToString();
+        originHungryDecrease = hungryDecreasePerDay;
+        enhancements[5].text = originHungryDecrease.ToString();
 
-        originMaxThirst = thirstyBar.maxValue;
-        enhancements[6].text = originMaxThirst.ToString();
+        originThirstyDecrease = thirstyDecreasePerDay;
+        enhancements[6].text = originThirstyDecrease.ToString();
+
+        enhancements[7].text = "10";
 
         originMagSize = gunStatus.magSize;
-        enhancements[7].text = originMagSize.ToString();
+        enhancements[8].text = originMagSize.ToString();
 
         // ui
         surviveDay.text = day.ToString();
@@ -295,19 +299,19 @@ public class LivingEntity : MonoBehaviour
         {
             case 0: //무기 공격력 증가
                 gunStatus.damage += 1;
-                enhancements[0].text = gunStatus.damage.ToString() + "<color=yellow>(+" + (gunStatus.damage - originGunDamage).ToString() + ")</color>";
+                enhancements[0].text = string.Format("{0:f2}", gunStatus.damage) + "<color=yellow>(+" + string.Format("{0:f2}", (gunStatus.damage - originGunDamage))+ ")</color>";
                 Debug.Log("무기 공격력 증가");
                 break;
 
             case 1: //무기 연사력 증가 = 발사간격 감소
                 gunStatus.fireDelayTime *= 0.9f;
-                enhancements[1].text = gunStatus.fireDelayTime.ToString() + "<color=yellow>(+" + (gunStatus.fireDelayTime - originFireSpeed).ToString() + ")</color>";
+                enhancements[1].text = string.Format("{0:f2}", gunStatus.fireDelayTime) + "<color=yellow>(-" + string.Format("{0:f2}", (originFireSpeed - gunStatus.fireDelayTime)) + ")</color>";
                 Debug.Log("무기 연사력 증가");
                 break;
 
             case 2: //무기 장전시간 감소
                 gunStatus.reloadTime *= 0.9f;
-                enhancements[2].text = gunStatus.reloadTime.ToString() + "<color=yellow>(+" + (gunStatus.reloadTime - originReloadSpeed).ToString() + ")</color>";
+                enhancements[2].text = string.Format("{0:f2}", gunStatus.reloadTime) + "<color=yellow>(-" + string.Format("{0:f2}", (originReloadSpeed - gunStatus.reloadTime)) + ")</color>";
                 Debug.Log("무기 장전시간 감소");
                 break;
 
@@ -315,39 +319,42 @@ public class LivingEntity : MonoBehaviour
                 playerMovement.walkSpeed *= 1.1f;
                 playerMovement.runSpeed *= 1.1f;
                 playerMovement.turnSpeed *= 1.1f;
-                enhancements[3].text = playerMovement.walkSpeed.ToString() + "<color=yellow>(+" + (playerMovement.walkSpeed - originWalkSpeed).ToString() + ")</color>";
+                enhancements[3].text = string.Format("{0:f2}", playerMovement.walkSpeed) + "<color=yellow>(+" + string.Format("{0:f2}", (playerMovement.walkSpeed - originWalkSpeed)) + ")</color>";
                 Debug.Log("이속 증가");
                 break;
 
             case 4: //플레이어 체력 증가
                 health *= 1.1f;
                 hpBar.maxValue *= 1.1f;
-                enhancements[4].text = hpBar.maxValue.ToString() + "<color=yellow>(+" + (hpBar.maxValue - originMaxHealth).ToString() + ")</color>";
+                enhancements[4].text = string.Format("{0:f2}", hpBar.maxValue) + "<color=yellow>(+" + string.Format("{0:f2}", (hpBar.maxValue - originMaxHealth)) + ")</color>";
                 Debug.Log("체력 증가");
                 break;
 
             case 5: //배고픔 감소량 감소
                 hungryDecreasePerDay -= 1;
-                enhancements[5].text = hungryDecreasePerDay.ToString() + "<color=yellow>(+" + (hungryBar.maxValue - originMaxHunger).ToString() + ")</color>";
+                enhancements[5].text = hungryDecreasePerDay.ToString() + "<color=yellow>(-" + (originHungryDecrease - hungryDecreasePerDay).ToString() + ")</color>";
                 Debug.Log("배고픔 감소");
                 break;
 
             case 6: //목마름 감소량 감소
                 thirstyDecreasePerDay -= 1;
-                enhancements[6].text = thirstyDecreasePerDay.ToString() + "<color=yellow>(+" + (thirstyBar.maxValue - originMaxThirst).ToString() + ")</color>";
+                enhancements[6].text = thirstyDecreasePerDay.ToString() + "<color=yellow>(-" + (originThirstyDecrease - thirstyDecreasePerDay).ToString() + ")</color>";
                 Debug.Log("목마름 감소");
                 break;
 
-            case 7: //장전하는 탄 수 증가
+            case 7: //화폐 획득량 증가
+                inventory.getMoreMoney += 2;
+                enhancements[7].text = (10 + inventory.getMoreMoney).ToString() + "<color=yellow>(+" + (inventory.getMoreMoney).ToString() + ")</color>";
+                Debug.Log("화폐 획득량 증가");
+                break;
+
+            case 8: //장전하는 탄 수 증가
                 gunStatus.magSize += 3;
-                enhancements[7].text = gunStatus.magSize.ToString() + "<color=yellow>(+" + (gunStatus.magSize - originMagSize).ToString() + ")</color>";
+                enhancements[8].text = gunStatus.magSize.ToString() + "<color=yellow>(+" + (gunStatus.magSize - originMagSize).ToString() + ")</color>";
                 Debug.Log("장전 탄 수 증가");
                 break;
 
-            case 8: //화폐 획득량 증가
-                inventory.getMoreMoney += 2;
-                Debug.Log("화폐 획득량 증가");
-                break;
+            
 
         }
     }
