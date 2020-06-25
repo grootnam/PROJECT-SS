@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,14 +20,16 @@ public class Upgrade : MonoBehaviour
     bool OpenInventory;
     private bool NoEnemy;
 
+    private GameObject Upgrader;
 
+    
     void Start()
     {
         livingEntity = GameObject.FindWithTag("Player").GetComponent<LivingEntity>();
-        UpgradeUI = GameObject.Find("Upgrade").transform.Find("upgrade_base").gameObject;
-        UpgradeUIPanel = GameObject.Find("Upgrade").transform.Find("upgrade_panel").gameObject;
-        UpgradeExp = GameObject.Find("Upgrade").transform.Find("upgrade_explicate").gameObject;
-        Ui_interactive = GameObject.Find("ItemProduction").transform.Find("UI_InterActive").gameObject;
+        UpgradeUI = GameObject.Find("ingameUIcanvas").transform.Find("Upgrade").transform.Find("upgrade_base").gameObject;
+        UpgradeUIPanel = GameObject.Find("ingameUIcanvas").transform.Find("Upgrade").transform.Find("upgrade_panel").gameObject;
+        UpgradeExp = GameObject.Find("ingameUIcanvas").transform.Find("Upgrade").transform.Find("upgrade_explicate").gameObject;
+        Ui_interactive = GameObject.Find("ingameUIcanvas").transform.Find("ItemProduction").transform.Find("UI_InterActive").gameObject;
     }
 
     private void OnTriggerStay(Collider other)
