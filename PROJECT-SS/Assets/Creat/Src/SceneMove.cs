@@ -55,7 +55,7 @@ public class SceneMove : MonoBehaviour
                     {
                         case "Goto_2-3":
                             SceneManager.LoadScene("Stage 2-3");
-                            meIcon_vector.y -= 50;
+                            meIcon_vector.y -= 60;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                     }
@@ -66,7 +66,7 @@ public class SceneMove : MonoBehaviour
                     {
                         case "Goto_1-3":
                             SceneManager.LoadScene("Stage 1-3");
-                            meIcon_vector.y += 50;
+                            meIcon_vector.y += 60;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             if (!visited103)
                             {
@@ -76,7 +76,7 @@ public class SceneMove : MonoBehaviour
                             break;
                         case "Goto_3-3":
                             SceneManager.LoadScene("Stage 3-3");
-                            meIcon_vector.y -= 50;
+                            meIcon_vector.y -= 60;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                     }
@@ -87,7 +87,7 @@ public class SceneMove : MonoBehaviour
                     {
                         case "Goto_3-2":
                             SceneManager.LoadScene("Stage 3-2");
-                            meIcon_vector.x += 50;
+                            meIcon_vector.x += 60;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                     }
@@ -103,12 +103,12 @@ public class SceneMove : MonoBehaviour
                                 Destroy(map301);
                                 visited301 = true;
                             }
-                            meIcon_vector.x -= 50;
+                            meIcon_vector.x -= 60;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                         case "Goto_3-3":
                             SceneManager.LoadScene("Stage 3-3");
-                            meIcon_vector.x += 50;
+                            meIcon_vector.x += 60;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                     }
@@ -120,22 +120,22 @@ public class SceneMove : MonoBehaviour
                     {
                         case "Goto_2-3":
                             SceneManager.LoadScene("Stage 2-3");
-                            meIcon_vector.y += 50;
+                            meIcon_vector.y += 60;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                         case "Goto_3-2":
                             SceneManager.LoadScene("Stage 3-2");
-                            meIcon_vector.x -= 50;
+                            meIcon_vector.x -= 60;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                         case "Goto_3-4":
                             SceneManager.LoadScene("Stage 3-4");
-                            meIcon_vector.x += 50;
+                            meIcon_vector.x += 60;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                         case "Goto_4-3":
                             SceneManager.LoadScene("Stage 4-3");
-                            meIcon_vector.y -= 50;
+                            meIcon_vector.y -= 60;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                     }
@@ -146,12 +146,12 @@ public class SceneMove : MonoBehaviour
                     {
                         case "Goto_3-3":
                             SceneManager.LoadScene("Stage 3-3");
-                            meIcon_vector.x -= 50;
+                            meIcon_vector.x -= 60;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                         case "Goto_3-5":
                             SceneManager.LoadScene("Stage 3-5");
-                            meIcon_vector.x += 50;
+                            meIcon_vector.x += 60;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             if (!visited305)
                             {
@@ -167,7 +167,7 @@ public class SceneMove : MonoBehaviour
                     {
                         case "Goto_3-4":
                             SceneManager.LoadScene("Stage 3-4");
-                            meIcon_vector.x -= 50;
+                            meIcon_vector.x -= 60;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                     }
@@ -178,12 +178,12 @@ public class SceneMove : MonoBehaviour
                     {
                         case "Goto_3-3":
                             SceneManager.LoadScene("Stage 3-3");
-                            meIcon_vector.y += 50;
+                            meIcon_vector.y += 60;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                         case "Goto_5-3":
                             SceneManager.LoadScene("Stage 5-3");
-                            meIcon_vector.y -= 50;
+                            meIcon_vector.y -= 60;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             if (!visited503)
                             {
@@ -200,7 +200,7 @@ public class SceneMove : MonoBehaviour
                     {
                         case "Goto_4-3":
                             SceneManager.LoadScene("Stage 4-3");
-                            meIcon_vector.y += 50;
+                            meIcon_vector.y += 60;
                             GameObject.Find("meIcon").transform.position = meIcon_vector;
                             break;
                     }

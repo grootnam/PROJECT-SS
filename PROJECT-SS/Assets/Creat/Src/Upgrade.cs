@@ -133,7 +133,7 @@ public class Upgrade : MonoBehaviour
             Ui_interactive.SetActive(false);
         }
 
-        if (!OpenInventory && Input.GetKeyDown(KeyCode.E) && !flag)
+        if (!OpenInventory && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)) && !flag)
         {
             Time.timeScale = 1f;
             CloseUpgradeUI();

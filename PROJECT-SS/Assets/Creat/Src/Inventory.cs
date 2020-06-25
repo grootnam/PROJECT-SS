@@ -51,7 +51,7 @@ public class Inventory : MonoBehaviour
     private void TryOpenInventory()
     {
         // 'I'를 누르면,
-        if (Input.GetKeyDown(KeyCode.I) && upgrade.activeSelf == false)
+        if ((Input.GetKeyDown(KeyCode.I) || (inventoryActivated && Input.GetKeyDown(KeyCode.Escape))) && upgrade.activeSelf == false )
         {
             // 열린 건 닫고, 닫힌 건 열어준다.
             inventoryActivated = !inventoryActivated;
