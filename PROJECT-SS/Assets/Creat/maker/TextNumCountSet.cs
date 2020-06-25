@@ -76,8 +76,16 @@ public class TextNumCountSet : MonoBehaviour
             item.itemType = Item.ItemType.Used;
             item.itemCost = 200;
         }
+
+
+        if (count == 0)
+        {
+            return;
+        }
+
         // 인벤토리에 추가한다.
         theInventory.AcquireItem(item, count);
+
 
         // 제작할 개수를 다시 0으로 초기화한다.
         count = 0;

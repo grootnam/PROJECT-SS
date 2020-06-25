@@ -25586,6 +25586,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   theInventory: {fileID: 776143127}
+  getCoinSound: {fileID: 8300000, guid: 59e151e5987a4e84ca328acd205c5808, type: 3}
 --- !u!1 &1475711270
 GameObject:
   m_ObjectHideFlags: 0
