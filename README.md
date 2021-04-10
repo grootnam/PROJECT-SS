@@ -6,10 +6,10 @@
 
 
 ### 요약
-![123](https://user-images.githubusercontent.com/26182769/114264617-ecf75900-9a26-11eb-871e-f39838cc9375.gif)
-
 - 5*5 크기 무작위 구조 던전을 돌아다니며, 점점 강해지는 적들을 물리치고,
 - 자원을 모아 점점 강해지며 오래 살아남는 3D 생존게임   
+- ![123](https://user-images.githubusercontent.com/26182769/114264617-ecf75900-9a26-11eb-871e-f39838cc9375.gif)
+
 
 
 ### 시스템
